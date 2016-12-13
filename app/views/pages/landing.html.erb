@@ -1,5 +1,5 @@
 <div class="back-layer">
-  <div class="image-slider" style="background-image: url(https://unsplash.it/1920/1200?image=1083)"></div>
+  <%= image_tag "image-1", class: "image-slider" %>
 </div>
 <div class="front-layer">
   <div class="front-layer-content">
@@ -9,17 +9,40 @@
       <p>at Le Soleil d'Or Cayman Brac</p>
       <ul class="mid-button-group" >
         <li>
-          <a href="http://www.wildwellnesstravel.com/home" target="_blank">Wild wellness travel site</a>
+          <a href="http://www.wildwellnesstravel.com/home" target="_blank" 
+          class="landing-button">Wild wellness travel site</a>
         </li>
         <li>
-          <a href="http://www.lesoleildor.com/holistic-hideaways" target="_blank">holistic hideaways site</a>
+          <a href="http://www.lesoleildor.com/holistic-hideaways" target="_blank" 
+          class="landing-button">holistic hideaways site</a>
         </li>
       </ul>
     </div>
     <div class="lower-group">
-    <a href="">a</a>
-    <a href="">a</a>
-    <a href="">a</a>
+    <!--
+autor: Marco Barría 
+https://twitter.com/marco_bf
+-->
+<div class="text">
+  <svg>
+   <defs>
+     <mask id="mask" cx="50px" cy="50px" r="50">
+       <!-- alpha rectangle -->
+       <!-- rectángulo alfa -->
+       <circle id="alpha" cx="50px" cy="50px" r="50"/>
+       <!-- All text that you want -->
+       <!-- Coloca todo el texto que necesites -->
+       <text id="title" x="50px" y="50px" dy="1.58em">SVG + CSS</text>
+       <text id="subtitle" x="50%" y="0" dy="9.8em">Use it please!</text>
+     </mask>
+    </defs>
+    <!-- Apply color here! -->
+    <!-- Color aquí -->
+    <circle id="base" cx="50px" cy="50px" r="50"/>
+  </svg>
+</div>
+
+<section class="intro"></section>
+      </div>
     </div>
   </div>
-</div>

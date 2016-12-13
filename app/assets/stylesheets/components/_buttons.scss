@@ -1,0 +1,26 @@
+.landing-button {
+	width: 280px;
+	background-color: transparent;
+	border: 2px solid white;
+	padding-top: 1em;
+    padding-right: 1.44em;
+    padding-bottom: 1em;
+    padding-left: 1.44em;
+	text-decoration: none;
+	color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    font-style: normal;
+	-webkit-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -moz-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -ms-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+    -o-transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+	transition: color 170ms ease-in-out, border-color 170ms ease-in-out;
+	&:hover {
+		text-decoration: none;
+		background-color: white;
+		color: #181818;
+	}
+}

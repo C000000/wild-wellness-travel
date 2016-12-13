@@ -29,6 +29,7 @@
   margin: 0 auto;
   text-align: center;
   h1 {
+    margin: 0 0 20px 0;
     font-size: 110px;
     line-height: 1em;
     text-transform: none;
@@ -37,6 +38,7 @@
     font-style: normal;
   }
   p {
+    margin: 0 0 60px 0;
     font-size: 20px;
     line-height: 1.4em;
     text-transform: none;
@@ -47,11 +49,12 @@
 }
 
 .mid-button-group {
-  list-style-type: none;
+  margin: 0 auto;
   padding: 0;
+  list-style-type: none;
   li {
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 5px;
   }
 }
 
