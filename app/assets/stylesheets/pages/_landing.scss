@@ -7,10 +7,16 @@
   overflow: hidden;
 }
 
+.image-slider {
+  background-size: cover;
+}
+
 .front-layer-content {
+  font-family: "Open Sans";
   padding: 40px 60px 60px 60px;
   height: 100%;
   color: white;
+  background-color: rgba(50,50,50,0.4);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,7 +32,8 @@
 }
 
 .mid-group {
-  margin: 0 auto;
+  margin: 0
+auto;
   text-align: center;
   h1 {
     margin: 0 0 20px 0;
@@ -42,7 +49,7 @@
     font-size: 20px;
     line-height: 1.4em;
     text-transform: none;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     font-weight: 400;
     font-style: normal;
   }
@@ -59,6 +66,41 @@
 }
 
 .lower-group {
+  text-align: center;
   margin: 0 auto;
+  width: 100%;
+  height: 28px;
   display: inline-block;
+  a {
+    text-decoration: none;
+    margin: 0 4px;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.social-buttons {
+  height: 28px;
+  width: 28px;
+}
+
+.social-icon {
+  text-anchor: middle;
+  font-family: FontAwesome;
+  font-size: 16px;
+}
+
+.alpha {
+  fill: white;
+  cx: 50%;
+  cy: 50%;
+  r: 14px;
+}
+
+.base {
+  fill: white;
+  cx: 50%;
+  cy: 50%;
+  r: 14px;
 }

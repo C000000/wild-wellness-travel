@@ -1,5 +1,6 @@
 <div class="back-layer">
-  <%= image_tag "image-1", class: "image-slider" %>
+  <div class="image-slider" style="background-image: url('/assets/image-1')">
+  </div>
 </div>
 <div class="front-layer">
   <div class="front-layer-content">
@@ -9,40 +10,76 @@
       <p>at Le Soleil d'Or Cayman Brac</p>
       <ul class="mid-button-group" >
         <li>
-          <a href="http://www.wildwellnesstravel.com/home" target="_blank" 
+          <a href="http://www.wildwellnesstravel.com/home" target="_blank"
           class="landing-button">Wild wellness travel site</a>
         </li>
         <li>
-          <a href="http://www.lesoleildor.com/holistic-hideaways" target="_blank" 
+          <a href="http://www.lesoleildor.com/holistic-hideaways" target="_blank"
           class="landing-button">holistic hideaways site</a>
         </li>
       </ul>
     </div>
     <div class="lower-group">
-    <!--
-autor: Marco Barría 
-https://twitter.com/marco_bf
--->
-<div class="text">
-  <svg>
-   <defs>
-     <mask id="mask" cx="50px" cy="50px" r="50">
-       <!-- alpha rectangle -->
-       <!-- rectángulo alfa -->
-       <circle id="alpha" cx="50px" cy="50px" r="50"/>
-       <!-- All text that you want -->
-       <!-- Coloca todo el texto que necesites -->
-       <text id="title" x="50px" y="50px" dy="1.58em">SVG + CSS</text>
-       <text id="subtitle" x="50%" y="0" dy="9.8em">Use it please!</text>
-     </mask>
-    </defs>
-    <!-- Apply color here! -->
-    <!-- Color aquí -->
-    <circle id="base" cx="50px" cy="50px" r="50"/>
-  </svg>
-</div>
+    <a href="#">
+    <svg class="social-buttons">
+       <defs>
+         <mask id="mask-instagram">
+           <circle class="alpha"/>
+           <text class="social-icon" x="50%", y="70%">&#xf16d;</text>
+         </mask>
+       </defs>
+       <circle class="base" style="mask: url(#mask-instagram);"/>
+     </svg>
+     </a>
 
-<section class="intro"></section>
-      </div>
-    </div>
-  </div>
+     <a href="">
+    <svg class="social-buttons">
+       <defs>
+         <mask id="mask-email">
+           <circle class="alpha"/>
+           <text class="social-icon" x="50%", y="70%">&#xf003;</text>
+         </mask>
+       </defs>
+       <circle class="base" style="mask: url(#mask-email);"/>
+     </svg>
+     </a>
+
+     <a href="">
+    <svg class="social-buttons">
+       <defs>
+         <mask id="mask-google">
+           <circle class="alpha"/>
+           <text class="social-icon" x="50%", y="70%">&#xf0d5;</text>
+         </mask>
+       </defs>
+       <circle class="base" style="mask: url(#mask-google);"/>
+     </svg>
+     </a>
+
+     <a href="">
+    <svg class="social-buttons">
+       <defs>
+         <mask id="mask-linkedin">
+           <circle class="alpha"/>
+           <text class="social-icon" x="50%", y="70%">&#xf0e1;</text>
+         </mask>
+       </defs>
+       <circle class="base" style="mask: url(#mask-linkedin);"/>
+     </svg>
+     </a>
+
+     <a href="">
+    <svg class="social-buttons">
+       <defs>
+         <mask id="mask-twitter">
+           <circle class="alpha"/>
+           <text class="social-icon" x="50%", y="70%">&#xf099;</text>
+         </mask>
+       </defs>
+       <circle class="base" style="mask: url(#mask-twitter);"/>
+     </svg>
+     </a>
+
+   </div>
+ </div>
+</div>
