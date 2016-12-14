@@ -9,6 +9,7 @@
   align-items: flex-start;
   justify-content: space-between;
   font-family: "Open Sans";
+  z-index: 1;
 }
 
 /* Optional class to fix the navbar on top */
@@ -22,6 +23,7 @@
 
 .wwt-logo {
   width: 300px;
+  border-radius: 40px;
 }
 
 /* Navbar right section (with form, links, button) */
