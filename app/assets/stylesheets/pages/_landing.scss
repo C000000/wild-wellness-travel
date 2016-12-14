@@ -2,7 +2,7 @@
   display: none;
 }
 
-.back-layer, .image-slider, .front-layer {
+.back-layer, .front-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -12,6 +12,8 @@
 }
 
 .image-slider {
+  height: 100%;
+  background: no-repeat center center fixed;
   background-size: cover;
 }
 
