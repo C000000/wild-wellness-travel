@@ -1,7 +1,7 @@
 <div class="navbar-wwt">
   <!-- Left Side -->
   <div class="navbar-left hidden-xs hidden-sm">
-    <%= link_to (image_tag "wwt_logo.jpg", class: "wwt-logo"), home_path %>
+    <%= link_to (image_tag "wwt_logo.jpg", class: "wwt-logo"), root_path %>
   </div>
 
   <!-- Right Navigation -->
@@ -16,10 +16,10 @@
     </form>
 
     <!-- Pages -->
-    <%= link_to "Services", home_path, class: "navbar-item navbar-link" %>
-    <%= link_to "Preferred Wellness Experiences", home_path, class: "navbar-item navbar-link" %>
-    <%= link_to "Reatreat Planning", home_path, class: "navbar-item navbar-link" %>
-    <%= link_to "Contact", home_path, class: "navbar-item navbar-link" %>
+    <%= link_to "Services", root_path, class: "navbar-item navbar-link" %>
+    <%= link_to "Preferred Wellness Experiences", root_path, class: "navbar-item navbar-link" %>
+    <%= link_to "Reatreat Planning", root_path, class: "navbar-item navbar-link" %>
+    <%= link_to "Contact", root_path, class: "navbar-item navbar-link" %>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
