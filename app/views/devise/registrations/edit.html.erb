@@ -5,14 +5,20 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :date_of_birth, start_year: Time.now.year - 80,
+    end_year: Time.now.year - 8, order: [:day, :month, :year] %>
+
+    <%= f.input :country, priority: ["United States"] %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :street_address %>
+    <%= f.input :phone_number %>
+    <%= f.input :zip_code %>
   </div>
 
   <div class="form-actions">
