@@ -4,7 +4,8 @@
 }
 
 .home-image-slider {
-  position: fixed;
+  position: absolute;
+  background-position: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,9 +14,10 @@
   z-index: -1;
   background-size: cover;
   h1 {
+    font-family: 'Open Sans';
     text-align: center;
     margin: 0 auto;
-    padding: 200px 0 0;
+    padding: 300px 0 0;
   }
 }
 
