@@ -1,0 +1,13 @@
+.devise-container {
+	margin: 0 auto;
+	height: calc(100vh - 320px);
+}
+
+.devise-form {
+	margin: 100px auto;
+	padding: 30px 60px;
+	width: 500px;
+	@media (max-width: $screen-xs) {
+		margin: 0 auto;
+	}
+}
