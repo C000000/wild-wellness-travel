@@ -9,6 +9,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 gem "country_select"
+gem 'cloudinary'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 gem 'sass-rails'
 gem 'jquery-rails'
