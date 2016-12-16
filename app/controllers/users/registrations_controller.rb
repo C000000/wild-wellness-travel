@@ -43,7 +43,7 @@ before_action :configure_account_update_params, only: [:update]
   end
 
   def after_update_path_for(resource)
-      user_path(resource)
+      edit_user_registration_path(resource)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
