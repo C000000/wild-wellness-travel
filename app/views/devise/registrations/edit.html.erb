@@ -1,33 +1,53 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div class="container container-less-width">
+  <div class="account-edit-categories">
+      <p class="profile-text">Hello <%= current_user.first_name if current_user.first_name %></p>
+    <a class="tab active" data-target="#personal-info">
+      <p>Personal Info</p>
+    </a>
+    <a class="tab" data-target="#contact-info">
+      <p>Contact Info</p>
+    </a>
+    <a class="tab" data-target="#password-info">
+      <p>Email and Password</p>
+    </a>
+  </div>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
+  <div class="tab-results">
+    <div id="personal-info" class="tab-content">
+      <%= f.input :first_name, autofocus: true %>
+      <%= f.input :last_name %>
+      <%= f.input :date_of_birth, start_year: Time.now.year - 80,
+      end_year: Time.now.year - 8, order: [:day, :month, :year] %>
+      <%= f.input :gender %>
+    </div>
 
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :date_of_birth, start_year: Time.now.year - 80,
-    end_year: Time.now.year - 8, order: [:day, :month, :year] %>
+    <div id="contact-info" class="tab-content">
+      <%= f.input :country, priority: ["United States"] %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :street_address %>
+      <%= f.input :phone_number %>
+      <%= f.input :zip_code %>
+    </div>
 
-    <%= f.input :country, priority: ["United States"] %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :street_address %>
-    <%= f.input :phone_number %>
-    <%= f.input :zip_code %>
+    <div id="password-info" class="tab-content">
+      <%= f.input :email, required: true %>
+      <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+      <%= f.input :password_confirmation, required: false %>
+    </div>
+
+    <div class="confirmation-form">
+      <div>
+        <%= f.button :submit, "Update", class: "btn btn-primary" %>
+      </div>
+      <div>
+        <%= link_to "Cancel", :back, class: "btn btn-danger" %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+  <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
