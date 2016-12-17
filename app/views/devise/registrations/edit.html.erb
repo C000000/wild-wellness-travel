@@ -16,7 +16,7 @@
 
   <div class="tab-results">
     <div id="personal-info" class="tab-content">
-      <%= image_tag "#{current_user.facebook_picture_url || 'image_placeholder.png'}" if current_user.profile_picture.nil? %>
+      <%= image_tag "#{current_user.facebook_picture_url || 'image_placeholder.png'}", class: "profile-pic" if current_user.profile_picture.nil? %>
       <%= f.input :profile_picture, as: :attachinary %>
       <%= f.input :first_name, autofocus: true %>
       <%= f.input :last_name %>
