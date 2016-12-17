@@ -14,5 +14,6 @@
     <%= yield %>
     <%= render 'shared/footer' unless current_page?(landing_path) %>
     <%= javascript_include_tag 'application' %>
+    <%= cloudinary_js_config %>
   </body>
 </html>
