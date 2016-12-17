@@ -10,7 +10,9 @@ gem 'devise'
 gem 'redis'
 gem "country_select"
 gem 'cloudinary'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem "attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 gem 'sass-rails'
 gem 'jquery-rails'
