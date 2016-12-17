@@ -8,11 +8,13 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
-gem "country_select"
+gem 'country_select'
 gem 'cloudinary'
-gem "attachinary"
-gem "jquery-fileupload-rails"
-gem "coffee-rails"
+gem 'attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'sass-rails'
 gem 'jquery-rails'

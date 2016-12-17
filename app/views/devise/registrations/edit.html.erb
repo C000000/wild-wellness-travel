@@ -16,7 +16,8 @@
 
   <div class="tab-results">
     <div id="personal-info" class="tab-content">
-    <%= f.input :profile_picture, as: :attachinary %>
+      <%= image_tag "#{current_user.facebook_picture_url || 'image_placeholder.png'}" if current_user.profile_picture.nil? %>
+      <%= f.input :profile_picture, as: :attachinary %>
       <%= f.input :first_name, autofocus: true %>
       <%= f.input :last_name %>
       <%= f.input :date_of_birth, start_year: Time.now.year - 80,
