@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   has_attachment :profile_picture
 
+  geocoded_by :full_address
+  after_validation :geocode, if: :full_address_changed?
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -33,19 +36,27 @@ class User < ApplicationRecord
   data = oauth.info
   user = User.where(email: data["email"]).first
 
-
   # Uncomment the section below if you want users to be created if they don't exist
   unless user
    user = User.create(
       first_name: data["first_name"],
       last_name: data["last_name"],
-      google_picture_url: data["image"],
+      facebook_picture_url: data["image"],
       email: data["email"],
       password: Devise.friendly_token[0,20],
       token: credentials.token,
-      refresh_token: credentials.refresh_token
+      token_expiry: credentials.refresh_token
    )
   end
   return user
 end
+
+  def full_address
+    "#{street_address}, #{zip_code} #{city} #{state} #{ISO3166::Country[country].name}"
+  end
+
+  def full_address_changed?
+    street_address_changed? || zip_code_changed? || city_changed? || state_changed? || country_changed?
+  end
+
 end
