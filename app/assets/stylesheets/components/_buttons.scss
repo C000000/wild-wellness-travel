@@ -1,27 +1,67 @@
-.landing-button {
-	width: 280px;
-	background-color: transparent;
-	border: 2px solid white;
-	padding-top: 1em;
-  padding-right: 1.44em;
-  padding-bottom: 1em;
-  padding-left: 1.44em;
-	text-decoration: none;
-	color: white;
-  font-family: "Open Sans";
-  text-transform: uppercase;
+.navbar-btn {
+  width: 90px;
+  margin: 0 10px;
+  padding: 10px 14px 12px 14px;
+  line-height: 1em;
   font-size: 14px;
-  letter-spacing: 0.2em;
   font-weight: 500;
-  font-style: normal;
-	-webkit-transition: all 170ms ease-in-out;
-  -moz-transition: all 170ms ease-in-out;
-  -ms-transition: all 170ms ease-in-out;
-  -o-transition: all 170ms ease-in-out;
-	transition: all 170ms ease-in-out;
-	&:hover {
-		text-decoration: none;
-		background-color: white;
-		color: #181818;
-	}
+  text-align: center;
+  text-decoration: none;;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 2px solid $grey;
+  color: $grey;
+  background-color: transparent;
+  opacity: 0.7;
+  transition: opacity 170ms ease-in-out;
+  &:hover {
+    color: $grey;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.login-btn {
+  text-transform: uppercase;
+  width: 150px;
+  height: 45px;
+}
+
+.facebook-btn {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
+  border-radius: 3px;
+  color: #fff;
+  transition: all 0.4s ease;
+  p {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 0;
+    margin: 0 auto;
+  }
+  span {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+  }
+  &:hover {
+    background-color: #fff;
+    color: #3b5998;
+  }
+}
+
+.google-btn {
+  background-color: #D34836;
+  border: 1px solid #D34836;
+  color: #fff;
+  &:hover {
+    background-color: #fff;
+    color: #D34836;
+  }
 }

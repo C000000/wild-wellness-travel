@@ -1,0 +1,99 @@
+.container-less-width {
+	max-width: 800px;
+	height: calc(100vh - 210px);
+	@media (max-width: $screen-sm) {
+		height: auto;
+	}
+}
+
+.account-edit-categories {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	@media (max-width: $screen-sm) {
+		height: 80px;
+	}
+}
+
+
+.account-edit-categories .tab > p {
+	border-bottom: 3px solid transparent;
+	transition: all 170ms ease;
+}
+
+.account-edit-categories .tab {
+	margin: 0;
+	padding: 0;
+	color: #eee;
+	text-align: center;
+	flex: 0 0 25%;
+	text-decoration: none;
+	background-color: $grey;
+	cursor: default;
+	&:hover {
+		cursor: pointer;
+	}
+	&:hover > p {
+		color: $columbia-blue;
+		border-bottom: 3px solid $columbia-blue;
+		padding-bottom: 5px;
+	}
+	&:last-child {
+		border-radius: 0 10px 0 0;
+	}
+	p {
+		padding: 10px 10px;
+		font-size: 16px;
+	}
+}
+
+.profile-text {
+	color: #eee;
+	text-align: center;
+	flex: 0 0 25%;
+	background-color: $grey;
+	cursor: default;
+	border-radius: 10px 0 0 0;
+	font-size: 16px;
+	margin: 0 auto;
+	padding: 10px 0 20px 0px;
+}
+
+.account-edit-categories .tab.active > p {
+	color: $columbia-blue;
+	border-bottom: 3px solid $columbia-blue;
+	padding-bottom: 5px;
+}
+
+.tab-results {
+	background-color: $columbia-blue;
+	padding: 30px 100px;
+	height: 600px;
+	overflow: auto;
+	@media (max-width: $screen-xs) {
+		padding: 30px 30px;
+	}
+}
+
+.confirmation-form {
+	padding-top: 30px;
+	text-align: center;
+	margin: 0 auto;
+	div {
+		display: inline-block;
+		padding: 0px 20px 20px 20px;
+	}
+}
+
+.tab-content {
+	display: none;
+	&:first-child {
+		display: block;
+	}
+}
+
+.profile-pic {
+  height: 150px;
+  width: 150px;
+}

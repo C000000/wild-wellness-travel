@@ -249,6 +249,19 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
+    scope: 'email',
+    info_fields: 'email, first_name, last_name',
+    image_size: 'large',
+    secure_image_url: true
+
+  config.omniauth :google_oauth2, ENV["GOOGLE_ID"], ENV["GOOGLE_SECRET"], {
+    scope: "https://www.googleapis.com/auth/userinfo.email,
+    https://www.googleapis.com/auth/userinfo.profile,
+    http://www.google.com/calendar/feeds,
+    http://www.google.com/m8/feeds"
+  }
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

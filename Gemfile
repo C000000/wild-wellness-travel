@@ -8,6 +8,18 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+gem 'country_select'
+gem 'cloudinary'
+gem 'attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'geocoder'
+gem 'gmaps4rails'
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -20,7 +32,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-  
+
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
