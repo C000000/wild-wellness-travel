@@ -1,16 +1,23 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  has_one :company
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  # Attachinary
   has_attachment :profile_picture
 
+  # Geocode
   geocoded_by :full_address
   after_validation :geocode, if: :full_address_changed?
 
+
+  # Facebook Auth
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -31,6 +38,7 @@ class User < ApplicationRecord
     return user
   end
 
+  # Google Auth
   def self.find_for_google_oauth2(oauth, signed_in_resource=nil)
   credentials = oauth.credentials
   data = oauth.info
@@ -51,6 +59,7 @@ class User < ApplicationRecord
   return user
 end
 
+  # Geocoder autocomplete
   def full_address
     "#{street_address}, #{zip_code} #{city} #{state} #{ISO3166::Country[country].name}"
   end

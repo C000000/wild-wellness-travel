@@ -1,0 +1,18 @@
+<div class="company-content">
+  <div class="container">
+    <h3>How to become retreat seller</h3>
+    <p>Some information</p>
+    <p>some pictures</p>
+    <div class="company-registration-form">
+      <h3 class="text-center">Please fill this form</h3>
+      <%= simple_form_for @company do |f| %>
+      <%= f.input :name, autofocus: true %>
+      <%= f.input :phone_number %>
+      <%= f.input :email %>
+      <%= f.input :street_address %>
+      <%= f.button :submit, "Next", class: "btn btn-primary" %>
+      <%= link_to 'Cancel', :back, class: "btn btn-warning" %>
+      <% end %>
+    </div>
+  </div>
+</div>
