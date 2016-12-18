@@ -1,17 +1,15 @@
-class CreateRetreats < ActiveRecord::Migration[5.0]
+class CreateCompanies < ActiveRecord::Migration[5.0]
   def change
-    create_table :retreats do |t|
+    create_table :companies do |t|
       t.string :name
       t.string :country
       t.string :city
       t.string :state
       t.string :street_address
-      t.string :phone_number
       t.string :email
-      t.string :video
-      t.decimal :price
+      t.string :phone_number
       t.text :description
-      t.boolean :available, :default => true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps
     end
