@@ -1,0 +1,15 @@
+<div class="card-layout" style="background: url(assets/image_placeholder.png)">
+<%#= cl_image_tag retreat.pictures.first.path, class: "card-image" %>
+  <div class="card-name">
+  <%= "CARD NAME" %>
+  </div>
+  <div class="card-location">
+  <%= "#{retreat.city}, #{retreat.country}" %>
+  </div>
+  <div class="card-price">
+  <%= retreat.price %>
+  </div>
+  <div class="card-rating">
+  <p>***** 100 reviews</p>
+  </div>
+</div>

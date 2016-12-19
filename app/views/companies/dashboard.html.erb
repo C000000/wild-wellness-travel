@@ -1,8 +1,9 @@
+<%#= link_to "New Retreat", new_retreat_path, class: "btn btn-info" %>
 <div class="dashboard-content">
-	<div class="container">
-		<h1>DASHBOARD</h1>
-		<%= @company.name %>
-		<hr>
-		<%= link_to "New Retreat", new_retreat_path, class: "btn btn-info" %>
-	</div>
+  <h1>DASHBOARD</h1>
+  <%= @company.name %>
+  <%= link_to "New Retreat", new_retreat_path%>
+  <div class="container">
+  <%= render 'retreats/retreat_card', retreat: @company.retreats.first if @company.retreats.first %>
+  </div>
 </div>
