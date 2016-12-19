@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   def new
+    redirect_to company_dashboard_path if current_user.company
     @company = Company.new
   end
 
