@@ -1,2 +1,8 @@
-<h1>DASHBOARD</h1>
-<%= @company.name %>
+<div class="dashboard-content">
+	<div class="container">
+		<h1>DASHBOARD</h1>
+		<%= @company.name %>
+		<hr>
+		<%= link_to "New Retreat", new_retreat_path, class: "btn btn-info" %>
+	</div>
+</div>
