@@ -4,6 +4,10 @@
   <%= @company.name %>
   <%= link_to "New Retreat", new_retreat_path%>
   <div class="container">
-  <%= render 'retreats/retreat_card', retreat: @company.retreats.first if @company.retreats.first %>
+  <% if @company.retreats.first %>
+  <% @company.retreats.each do |ret| %>
+  <%= render 'retreats/retreat_card', retreat: ret %>
+  <% end %>
+  <% end %>
   </div>
 </div>

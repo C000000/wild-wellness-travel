@@ -1,16 +1,96 @@
 .card-layout {
-  margin: 0 auto;
+  position: relative;
+  margin: 10px auto;
   padding: 0;
   height: 250px;
-  width: 400px;
-  background-size: cover;
-  // background-position: center;
-  // background: linear-gradient(180deg, rgba(255,255,255,0.9) 10%, rgba(255,209,148,0.2) 40%);
+  width: 500px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  text-shadow: 0px 1px 5px rgba(0,0,0,0.6);
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.6);
+  background: linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  @media (max-width: $screen-xs) {
+    width: 300px;
+    height: 150px;
+    font-size: 14px;
+  }
 }
 
 .card-image {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  z-index: -1;
+  @media (max-width: $screen-xs) {
+    width: 300px;
+    height: 150px;
+  }
+}
 
+.card-location {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.card-price {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.card-name {
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  text-transform: uppercase;
+}
+
+.card-rating {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+  transition: opacity 170ms ease;
+  &:hover {
+    opacity: 0.1;
+  }
+}
+
+
+.card-edit-links {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+  transition: opacity 170ms ease;
+  div {
+    text-align: center;
+    padding-top: 120px;
+    @media (max-width: $screen-xs) {
+      padding-top: 40px;
+    }
+    a {
+      margin: 5px auto;
+      width: 150px;
+    }
+  }
+  &:hover {
+    opacity: 0.8;
+  }
 }

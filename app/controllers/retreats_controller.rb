@@ -11,6 +11,7 @@ class RetreatsController < ApplicationController
   end
 
   def edit
+    @retreat = retreat.find(params[:retreat_id])
   end
 
   def update
