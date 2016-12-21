@@ -1,0 +1,22 @@
+<div class="card-layout">
+  <%= cl_image_tag retreat.pictures.first.path, size: '500x250', crop: :thumb, gravity: :center, class: "card-image" %>
+  <div class="card-location">
+    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+    <%= "#{retreat.city}, #{retreat.country}" %>
+  </div>
+  <div class="card-price">
+    <%= "#{retreat.price.to_i}$" %>
+  </div>
+  <div class="card-name">
+    <%= retreat.name %>
+  </div>
+  <div class="card-rating">
+    <%= "***** 10 reviews" %>
+  </div>
+  <div class="card-edit-links">
+    <div>
+      <%= link_to "Edit", root_path, class: "btn btn-info" %>
+      <%= link_to "Delete", root_path, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 .container-less-width {
 	max-width: 800px;
-	height: calc(100vh - 210px);
+	height: $min-page-height;
 	@media (max-width: $screen-sm) {
 		height: auto;
 	}

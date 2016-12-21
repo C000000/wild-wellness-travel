@@ -19,6 +19,11 @@
     <%= link_to "Services", root_path, class: "navbar-item navbar-link" %>
     <%= link_to "Preferred Wellness Experiences", root_path, class: "navbar-item navbar-link" %>
     <%= link_to "Reatreat Planning", root_path, class: "navbar-item navbar-link" %>
+    <% if user_signed_in? && current_user.company %>
+    <%= link_to "Business Dashboard", company_dashboard_path, class: "navbar-item navbar-link" %>
+    <% else %>
+    <%= link_to "Become a seller?", new_company_path, class: "navbar-item navbar-link" %>
+    <% end %>
     <%= link_to "Contact", root_path, class: "navbar-item navbar-link" %>
 
     <!-- Different navigation if login or not -->
