@@ -1,9 +1,7 @@
 $(document).ready(function(){
-	if ($(window).height() < $(".page-wrapper").height()) {
-		console.log("window < page");
+	if ($(window).height() / 1.5 < $(".page-wrapper").height()) {
 		$(".footer").css("position", "relative");
 	} else {
-		console.log("page < window");
 		$(".footer").css("position", "fixed");
 	}
 });

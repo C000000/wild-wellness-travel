@@ -1,0 +1,26 @@
+.dashboard-menu {
+  padding: 0;
+  font-size: 24px;
+  font-weight: 500;
+  list-style-type: none;
+  li {
+    height: 50px;
+    width: 100%;;
+    margin: 0 0 20px 0;
+  }
+}
+
+.dashboard-results {
+  overflow-x: auto;
+  height: 50vh;
+  background: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+  background: linear-gradient(top, #efedec, #f7f4f4);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+.dashboard-content {
+  display: none;
+  &:first-child {
+    display: block;
+  }
+}
