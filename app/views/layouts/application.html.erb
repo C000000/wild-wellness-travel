@@ -11,7 +11,9 @@
 <body>
   <%= render 'shared/navbar' unless current_page?(landing_path) %>
   <%= render 'shared/flashes' unless current_page?(landing_path) %>
+  <div class="page-wrapper">
   <%= yield %>
+  </div>
   <%= render 'shared/footer' unless current_page?(landing_path) %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>

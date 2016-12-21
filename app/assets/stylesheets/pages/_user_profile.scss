@@ -1,9 +1,5 @@
 .container-less-width {
 	max-width: 800px;
-	height: $min-page-height;
-	@media (max-width: $screen-sm) {
-		height: auto;
-	}
 }
 
 .account-edit-categories {
