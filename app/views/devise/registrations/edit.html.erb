@@ -1,6 +1,6 @@
 <div class="container container-less-width">
   <div class="account-edit-categories">
-      <p class="profile-text">Hello <%= current_user.first_name if current_user.first_name %></p>
+    <p class="profile-text">Hello <%= current_user.first_name if current_user.first_name %></p>
     <a class="tab active" data-target="#personal-info">
       <p>Personal Info</p>
     </a>
@@ -18,20 +18,28 @@
     <div id="personal-info" class="tab-content">
       <%= image_tag "#{current_user.facebook_picture_url || 'image_placeholder.png'}", class: "profile-pic" if current_user.profile_picture.nil? %>
       <%= f.input :profile_picture, as: :attachinary %>
-      <%= f.input :first_name, autofocus: true %>
-      <%= f.input :last_name %>
-      <%= f.input :date_of_birth, start_year: Time.now.year - 80,
-      end_year: Time.now.year - 8, order: [:day, :month, :year] %>
-      <%= f.input :gender %>
+      <div class="inline-fields">
+        <%= f.input :first_name, autofocus: true %>
+        <%= f.input :last_name %>
+      </div>
+      <div class="inline-fields">
+        <%= f.input :date_of_birth, start_year: Time.now.year - 80,
+        end_year: Time.now.year - 8, order: [:day, :month, :year] %>
+        <%= f.input :gender, collection: User::GENDER, prompt: "Select gender", label: "I am:" %>
+      </div>
     </div>
 
     <div id="contact-info" class="tab-content">
-      <%= f.input :country, priority: ["United States"] %>
-      <%= f.input :city %>
-      <%= f.input :state %>
+      <div class="inline-fields">
+        <%= f.input :country, priority: ["United States"] %>
+        <%= f.input :state, collection: User::STATES, prompt: "Select state" %>
+      </div>
+      <div class="inline-fields">
+        <%= f.input :city %>
+        <%= f.input :zip_code %>
+      </div>
       <%= f.input :street_address %>
-      <%= f.input :phone_number %>
-      <%= f.input :zip_code %>
+      <%= f.input :phone_number, placeholder: "(555) 123-4567" %>
     </div>
 
     <div id="password-info" class="tab-content">
@@ -40,13 +48,13 @@
       <%= f.input :password_confirmation, required: false %>
     </div>
 
-    <div class="confirmation-form">
-      <div>
-        <%= f.button :submit, "Update", class: "btn btn-primary" %>
-      </div>
-      <div>
-        <%= link_to "Cancel", :back, class: "btn btn-danger" %>
-      </div>
+  </div>
+  <div class="confirmation-form">
+    <div>
+      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+    </div>
+    <div>
+      <%= link_to "Cancel", :back, class: "btn btn-danger" %>
     </div>
   </div>
 

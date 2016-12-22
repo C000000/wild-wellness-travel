@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <% @retreats.each do |ret| %>
+    <div class="col-xs-12 col-sm-6">
+      <%= render 'retreat_card', retreat: ret %>
+    </div>
+    <% end %>
+  </div>
+</div>
