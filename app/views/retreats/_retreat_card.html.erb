@@ -13,11 +13,21 @@
   <div class="card-rating">
     <%= "***** 10 reviews" %>
   </div>
+  <!-- For company dashboard -->
+  <% if current_page?(company_dashboard_path) %>
   <div class="card-edit-links">
     <div>
       <%= link_to "Edit", edit_retreat_path(retreat), class: "btn btn-info" %>
       <%= link_to "Delete", retreat_path(retreat), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     </div>
   </div>
+  <% elsif current_page?(root_path) %>
+  <div class="card-edit-links">
+    <div>
+      <%= link_to "Edit", edit_retreat_path(retreat), class: "btn btn-info" %>
+      <%= link_to "Delete", retreat_path(retreat), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
+  </div>
+  <% end %>
   <div class="card-background-color"></div>
 </div>

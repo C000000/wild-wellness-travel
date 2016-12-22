@@ -47,6 +47,12 @@
   text-decoration: none;
 }
 
+.navbar-link.current {
+  color: $grey;
+  opacity: 1;
+  text-decoration: none;
+}
+
 /* Navbar search form */
 .navbar-search {
   flex: 0 0 auto;
