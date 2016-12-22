@@ -66,7 +66,7 @@
   z-index: 2;
 }
 
-.card-link {
+.card-links {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -75,23 +75,7 @@
   z-index:2;
   background: black;
   opacity: 0;
-  transition: opacity 170ms ease;
-  &:hover {
-    opacity: 0.1;
-  }
-}
-
-
-.card-edit-links {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
-  transition: opacity 170ms ease;
+  transition: opacity 250ms ease;
   div {
     text-align: center;
     padding-top: 120px;
@@ -106,4 +90,8 @@
   &:hover {
     opacity: 0.8;
   }
+}
+
+.user-links {
+  background-color: white;
 }

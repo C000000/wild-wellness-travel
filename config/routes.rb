@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:new, :create]
   get 'company_dashboard' => 'companies#dashboard'
 
-  resources :retreats, only: [:new, :create, :edit, :update, :destroy]
+  resources :retreats
 
   mount Attachinary::Engine => "/attachinary"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

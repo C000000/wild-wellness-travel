@@ -18,7 +18,7 @@
     <!-- Pages -->
     <%= link_to "Services", root_path, class: "navbar-item navbar-link" %>
     <%= link_to "Preferred Wellness Experiences", root_path, class: "navbar-item navbar-link" %>
-    <%= link_to "Reatreat Planning", root_path, class: "navbar-item navbar-link" %>
+    <%= link_to "Reatreat Planning", retreats_path, class: "navbar-item navbar-link  #{cp(retreats_path)}" %>
     <% if user_signed_in? && current_user.company %>
     <%= link_to "Business Dashboard", company_dashboard_path, class: "navbar-item navbar-link #{cp(company_dashboard_path)}" %>
     <% else %>
