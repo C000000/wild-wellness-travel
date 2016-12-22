@@ -1,5 +1,6 @@
 class Retreat < ApplicationRecord
 	belongs_to :companies
+	has_many :reviews
 	
 	has_attachments :pictures, maximum: 10
 

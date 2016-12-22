@@ -15,7 +15,7 @@ class RetreatsController < ApplicationController
 
   def update
     @retreat = Retreat.find(params[:id])
-    redirect_to company_dashboard_path if @retreat.update(retreat_params)
+    redirect_to edit_retreat_path if @retreat.update(retreat_params)
   end
 
   def destroy
