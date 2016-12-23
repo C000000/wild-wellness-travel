@@ -1,0 +1,21 @@
+<%= simple_form_for retreat do |f| %>
+<div class="col-xs-12 col-sm-4">
+<%= f.input :pictures, as: :attachinary, label: "Pictures (last uploaded will be a card cover picture)" %>
+</div>
+<div class="col-xs-12 col-sm-8">
+<%= f.input :name %>
+<%= f.input :price %>
+<%= f.input :phone_number %>
+<%= f.input :email %>
+<%= f.input :country, priority: ["United States"] %>
+<%= f.input :state %>
+<%= f.input :city %>
+<%= f.input :street_address %>
+<%= f.input :video %>
+<%= f.input :description %>
+</div>
+<div class="text-center">
+<%= f.button :submit, class: "btn btn-primary" %>
+<%= link_to "Back", company_dashboard_path, class: "btn btn-danger" %>
+</div>
+<% end %>

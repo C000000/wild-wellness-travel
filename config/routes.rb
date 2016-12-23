@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'landing' => 'pages#landing'
 
-  resources :companies, only: [:new, :create]
+  resources :companies, only: [:new, :create, :update]
   get 'company_dashboard' => 'companies#dashboard'
 
   resources :retreats
