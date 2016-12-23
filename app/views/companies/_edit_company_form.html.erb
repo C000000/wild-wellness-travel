@@ -6,7 +6,7 @@
 </div>
 <div class="inline-fields">
 <%= f.input :country, priority: ["United States"] %>
-<%= f.input :state %>
+<%= f.input :state, collection: User::STATES, prompt: "Select State" %>
 <%= f.input :city %>
 </div>
 <%= f.input :street_address %>
