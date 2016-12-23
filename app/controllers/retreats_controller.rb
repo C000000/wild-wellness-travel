@@ -8,7 +8,6 @@ class RetreatsController < ApplicationController
   end
 
   def new
-    @retreat = Retreat.new
   end
 
   def create

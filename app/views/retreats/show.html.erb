@@ -1,0 +1,28 @@
+<div class="retreat-pictures">
+	<% @retreat.pictures.each do |pic| %>
+	<%= cl_image_tag(pic.path, :crop => "fill") %>
+	<% end %>
+</div>
+
+<!-- <div id="retreat-map"></div> -->
+
+
+<% content_for(:after_js) do %>
+<script>
+	$(document).ready(function() {
+		handler = Gmaps.build('Google');
+		handler.buildMap({ internal: {id: 'retreat-map'}}, function(){
+			markers = handler.addMarkers([
+			{
+				lat: <%= @retreat.latitude %>,
+				lng: <%= @retreat.longitude %>,
+				infowindow: "<%= @retreat.street_address %>"
+			}
+			]);
+			handler.bounds.extendWith(markers);
+			handler.fitMapToBounds();
+			handler.getMap().setZoom(15);
+		});
+	});
+</script>
+<% end %>

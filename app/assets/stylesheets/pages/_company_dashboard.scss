@@ -20,8 +20,14 @@
 
 .dashboard-content {
   display: none;
+  padding: 20px 20px;
   &:first-child {
     display: block;
+  }
+  &:last-child {
+    @media (min-width: $screen-xs) {
+      padding: 20px 100px;
+    }
   }
 }
 
