@@ -13,8 +13,8 @@
 .dashboard-results {
   overflow-x: auto;
   height: 50vh;
-  background: -webkit-linear-gradient(top, #efedec, #f7f4f4);
-  background: linear-gradient(top, #efedec, #f7f4f4);
+  background: -webkit-linear-gradient(to bottom, #efedec, #f7f4f4);
+  background: linear-gradient(to bottom, #efedec, #f7f4f4);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
