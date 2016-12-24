@@ -1,10 +1,51 @@
 <div class="retreat-pictures">
 	<% @retreat.pictures.each do |pic| %>
-	<%= cl_image_tag(pic.path, :crop => "fill") %>
-	<% end %>
+  <div class="ret-pic" style='background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%), url(<%= "http://res.cloudinary.com/dijinio/image/upload/#{pic.path}" %>)'>
+  </div>
+  <% end %>
 </div>
-
-<!-- <div id="retreat-map"></div> -->
+<div class="container retreat-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="retreat-info-menu">
+        <a class="ret-tab dashboard-btn active" data-target="#retreat-details">Retreat Details</a>
+        <a class="ret-tab dashboard-btn" data-target="#retreat-photos">Photos</a>
+        <a class="ret-tab dashboard-btn" data-target="#retreat-reviews">Reviews</a>
+        <a class="ret-tab dashboard-btn" data-target="#retreat-contact">Contact Info</a>
+      </div>
+      <div class="retreat-results">
+        <div id="retreat-details" class="retreat-content">
+          <%= "#{@retreat.name} in #{@retreat.city}" %>
+          <br>
+          <%= "Price: #{@retreat.price.to_i}$" %>
+          <br>
+          <h4>Amenities:</h4>
+          <p>...</p>
+          <br>
+        </div>
+        <div id="retreat-photos" class="retreat-content">
+          <% @retreat.pictures.each do |pic| %>
+          <%= cl_image_tag(pic.path, height: 150) %>
+          <% end %>
+        </div>
+        <div id="retreat-reviews" class="retreat-content">
+          <p>reviews</p>
+        </div>
+        <div id="retreat-contact" class="retreat-content">
+          <p>Contact Info</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="booking-window">
+        <h3 class="text-center">Booking details</h3>
+        <p>Pick Date: <input type="text" id="datepicker"></p>
+        <%= link_to "Book", retreats_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+  <div id="retreat-map"></div>
+</div>
 
 
 <% content_for(:after_js) do %>
@@ -24,5 +65,12 @@
 			handler.getMap().setZoom(15);
 		});
 	});
+  $(function() {
+    $("#datepicker").datepicker({
+      dateFormat: "dd-mm-yy",
+      minDate: new Date(),
+      defaultDate: new Date()
+    });
+  } );
 </script>
 <% end %>

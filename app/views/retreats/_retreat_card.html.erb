@@ -22,12 +22,7 @@
     </div>
   </div>
   <% elsif current_page?(retreats_path) %>
-  <div class="card-links user-links">
-    <div>
-      <%= link_to "Details", retreat_path(retreat), class: "btn btn-info" %>
-      <%= link_to "Book", retreat_path(retreat), class: "btn btn-success" %>
-    </div>
-  </div>
+    <%= link_to "#", retreat_path(retreat), class: "card-link" %>
   <% end %>
   <div class="card-background-color"></div>
 </div>
