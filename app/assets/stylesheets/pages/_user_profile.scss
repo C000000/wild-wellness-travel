@@ -1,9 +1,5 @@
 .container-less-width {
 	max-width: 800px;
-	height: $min-page-height;
-	@media (max-width: $screen-sm) {
-		height: auto;
-	}
 }
 
 .account-edit-categories {
@@ -15,7 +11,6 @@
 		height: 80px;
 	}
 }
-
 
 .account-edit-categories .tab > p {
 	border-bottom: 3px solid transparent;
@@ -69,7 +64,7 @@
 .tab-results {
 	background-color: $columbia-blue;
 	padding: 30px 100px;
-	height: 600px;
+	height: 500px;
 	overflow: auto;
 	@media (max-width: $screen-xs) {
 		padding: 30px 30px;
@@ -96,4 +91,14 @@
 .profile-pic {
   height: 150px;
   width: 150px;
+}
+
+
+@media (min-width: $screen-sm) {
+  .inline-fields {
+    display: flex;
+    div {
+      padding-right: 40px;
+    }
+  }
 }

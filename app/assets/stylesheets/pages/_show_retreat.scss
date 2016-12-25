@@ -1,0 +1,77 @@
+.retreat-container {
+  margin-top: 50px;
+}
+
+.retreat-pictures {
+  position: relative;
+	width: 100%;
+	height: 700px;
+	text-align: center;
+  @media (max-width: $screen-sm) {
+    height: 500px;
+  }
+  @media (max-width: $screen-xs) {
+    height: 300px;
+  }
+}
+
+.ret-pic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.retreat-info-menu {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  a {
+    flex: 0 0 25%;
+  }
+}
+
+.retreat-results {
+  width: 100%;
+  height: 600px;
+  overflow-y: auto;
+  background-image: linear-gradient(to bottom, #efedec, #f7f4f4);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.6);
+  border-radius: 5px;
+  @media (max-width: $screen-sm) {
+    height: 400px;
+  }
+  @media (max-width: $screen-xs) {
+    height: 200px;
+  }
+}
+
+.retreat-content {
+  display: none;
+  &:first-child {
+    display: block;
+  }
+}
+
+#retreat-map {
+  margin-top: 20px;
+	display: block;
+	height: 400px;
+	width: 100%;
+  @media (max-width: $screen-xs) {
+    height: 200px;
+  }
+}
+
+.booking-window {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-image: linear-gradient(to bottom, #efedec, #f7f4f4);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.6);
+}

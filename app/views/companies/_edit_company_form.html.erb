@@ -1,0 +1,16 @@
+<%= simple_form_for company do |f| %>
+<%= f.input :name, label: "Name of the company", autofocus: true %>
+<div class="inline-fields">
+<%= f.input :phone_number %>
+<%= f.input :email %>
+</div>
+<div class="inline-fields">
+<%= f.input :country, priority: ["United States"] %>
+<%= f.input :state, collection: User::STATES, prompt: "Select State" %>
+<%= f.input :city %>
+</div>
+<%= f.input :street_address %>
+<div class="text-center">
+<%= f.button :submit, class: "btn btn-primary" %>
+</div>
+<% end %>

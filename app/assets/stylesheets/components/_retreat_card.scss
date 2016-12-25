@@ -1,6 +1,6 @@
 .card-layout {
   position: relative;
-  margin: 10px auto;
+  margin: 30px;
   padding: 0;
   height: 250px;
   width: 500px;
@@ -9,19 +9,33 @@
   font-size: 20px;
   text-shadow: 0px 1px 5px rgba(0,0,0,0.6);
   box-shadow: 0px 5px 10px rgba(0,0,0,0.6);
-  background: linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  transition: all 250ms ease;
   @media (max-width: $screen-xs) {
     width: 300px;
     height: 150px;
     font-size: 14px;
   }
+  &:hover {
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.6);
+    transform: scale(1.05);
+  }
+}
+
+.card-background-color {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:1;
+  background: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
 }
 
 .card-image {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0;
   @media (max-width: $screen-xs) {
     width: 300px;
     height: 150px;
@@ -32,12 +46,14 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  z-index: 2;
 }
 
 .card-price {
   position: absolute;
   right: 10px;
   top: 10px;
+  z-index: 2;
 }
 
 .card-name {
@@ -45,15 +61,17 @@
   bottom: 30px;
   left: 10px;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .card-rating {
   position: absolute;
   bottom: 10px;
   left: 10px;
+  z-index: 2;
 }
 
-.card-link {
+.card-links {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -62,23 +80,7 @@
   z-index:2;
   background: black;
   opacity: 0;
-  transition: opacity 170ms ease;
-  &:hover {
-    opacity: 0.1;
-  }
-}
-
-
-.card-edit-links {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
-  transition: opacity 170ms ease;
+  transition: opacity 250ms ease;
   div {
     text-align: center;
     padding-top: 120px;
@@ -92,5 +94,20 @@
   }
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+  transition: opacity 250ms ease;
+  &:hover {
+    opacity: 0.1;
   }
 }
