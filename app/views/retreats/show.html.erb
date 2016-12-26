@@ -40,9 +40,27 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-window">
-        <h3 class="text-center">Booking details</h3>
-        <p>Pick Date: <input type="text" id="datepicker"></p>
-        <%= link_to "Book", retreats_path, class: "btn btn-danger" %>
+      <%= "#{@retreat.price.to_i}$ per Night" %>
+        <%= simple_form_for @booking do |f| %>
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="datepickerIn">Check In</label>
+            <input type="text" id="datepickerIn" name="booking[start_date]"
+            placeholder="mm-dd-yyyy" readonly="readonly" style="width: 150px">
+          </div>
+          <div class="col-sm-6">
+            <label for="datepickerOut">Check Out</label>
+            <input type="text" id="datepickerOut" name="booking[end_date]"
+            placeholder="mm-dd-yyyy" readonly="readonly" style="width: 150px">
+          </div>
+        </div>
+        <hr>
+        <div class="total-price-result">
+          <p></p>
+        </div>
+        <%= f.hidden_field :retreat_id, value: @retreat.id %>
+        <%= f.button :submit, "Book", class: "btn btn-danger" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -68,10 +86,28 @@
 		});
 	});
   $(function() {
-    $("#datepicker").datepicker({
-      dateFormat: "dd-mm-yy",
+    var start_date = new Date();
+    var end_date = new Date();
+    $("#datepickerIn").datepicker({
+      dateFormat: "mm-dd-yy",
       minDate: new Date(),
-      defaultDate: new Date()
+      defaultDate: new Date(),
+      onSelect: function(sDate) {
+        start_date = new Date(sDate);
+        $("#datepickerOut").val("");
+        $(".total-price-result p").text("");
+        $("#datepickerOut").datepicker({
+          dateFormat: "mm-dd-yy",
+          minDate: start_date,
+          defaultDate: start_date,
+          onSelect: function(eDate) {
+            end_date = new Date(eDate);
+            var nights = ((end_date - start_date) / 1000 / 60 / 60 / 24);
+            $(".total-price-result p").text("Total for " + nights +
+              " nights: " + <%= @retreat.price %> * nights + "$");
+          }
+        });
+      }
     });
   } );
 </script>
