@@ -7,6 +7,7 @@ class RetreatsController < ApplicationController
 
   def show
     @retreat = Retreat.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
