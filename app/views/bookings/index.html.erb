@@ -1,2 +1,21 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="container">
+<% @bookings.each do |b| %>
+<div class="row">
+  <div class="col-sm-12 col-lg-6">
+  <%= render '/retreats/retreat_card', retreat: b.retreat %>
+  </div>
+  <div class="col-sm-12 col-lg-6">
+  </p><%= "Booked: #{b.created_at}" %></p>
+    </p><%= "Check in date: #{b.start_date}" %></p>
+    </p><%= "Check out date: #{b.end_date}" %></p>
+    </p><%= "Price: #{b.retreat.price.to_i}$" %></p>
+    <%= simple_form_for @review do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.hidden_field :retreat_id, value: b.retreat.id %>
+    <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</div>
