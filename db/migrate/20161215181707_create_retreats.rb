@@ -11,7 +11,6 @@ class CreateRetreats < ActiveRecord::Migration[5.0]
       t.string :video
       t.decimal :price
       t.text :description
-      t.references :company, foreign_key: true, index: true
       t.boolean :available, :default => true
 
       t.timestamps
