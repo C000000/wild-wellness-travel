@@ -11,7 +11,8 @@
     <%= retreat.name %>
   </div>
   <div class="card-rating">
-    <%= "***** 10 reviews" %>
+    <% rating = retreat.reviews.average(:rating) %>
+    <span class="stars"><%= rating.nil? ? 0 : rating %></span>
   </div>
   <!-- For company dashboard -->
   <% if current_page?(company_dashboard_path) %>

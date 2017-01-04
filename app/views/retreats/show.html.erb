@@ -29,7 +29,14 @@
           <% end %>
         </div>
         <div id="retreat-reviews" class="retreat-content">
-          <p>reviews</p>
+          <% @retreat.reviews.each do |r| %>
+          <div class="review-rating">
+            <p><strong><%= r.user.first_name %></strong></p>
+            <p><%= r.comment %></p>
+            <span class="stars"><%= r.rating %></span>
+            <hr>
+          </div>
+          <% end %>
         </div>
         <div id="retreat-contact" class="retreat-content">
           <%= "Email: #{@retreat.email}" %>
@@ -40,7 +47,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-window">
-      <%= "#{@retreat.price.to_i}$ per Night" %>
+        <%= "#{@retreat.price.to_i}$ per Night" %>
         <%= simple_form_for @booking do |f| %>
         <div class="row">
           <div class="col-sm-6">

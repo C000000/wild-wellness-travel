@@ -7,7 +7,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
-    raise
+    @review.save
+    redirect_to bookings_path
   end
 
   def edit

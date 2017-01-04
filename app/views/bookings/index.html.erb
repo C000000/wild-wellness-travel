@@ -1,21 +1,39 @@
 <div class="container">
-<% @bookings.each do |b| %>
-<div class="row">
-  <div class="col-sm-12 col-lg-6">
-  <%= render '/retreats/retreat_card', retreat: b.retreat %>
-  </div>
-  <div class="col-sm-12 col-lg-6">
-  </p><%= "Booked: #{b.created_at}" %></p>
-    </p><%= "Check in date: #{b.start_date}" %></p>
-    </p><%= "Check out date: #{b.end_date}" %></p>
-    </p><%= "Price: #{b.retreat.price.to_i}$" %></p>
-    <%= simple_form_for @review do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating %>
-    <%= f.hidden_field :retreat_id, value: b.retreat.id %>
-    <%= f.button :submit %>
-    <% end %>
-  </div>
+  <% @bookings.each do |b| %>
+  <div class="row">
+    <div class="col-sm-12 col-lg-6">
+      <%= render '/retreats/retreat_card', retreat: b.retreat %>
+    </div>
+    <div class="col-sm-12 col-lg-6">
+    </p><%= "Booked: #{b.created_at}" %></p>
+  </p><%= "Check in date: #{b.start_date}" %></p>
+</p><%= "Check out date: #{b.end_date}" %></p>
+</p><%= "Price: #{b.retreat.price.to_i}$" %></p>
+<hr>
+<% if rev = current_user.reviews.where(retreat_id: b.retreat.id).first %>
+<p>Your Review:</p>
+<p><%= rev.comment if rev.comment %></p>
+<p><%= rev.rating %></p>
+<% else %>
+<%= simple_form_for @review do |f| %>
+<%= f.input :comment %>
+<span class="starRating">
+  <input id="rating5" type="radio" name="review[rating]" value="5">
+  <label for="rating5">5</label>
+  <input id="rating4" type="radio" name="review[rating]" value="4">
+  <label for="rating4">4</label>
+  <input id="rating3" type="radio" name="review[rating]" value="3">
+  <label for="rating3">3</label>
+  <input id="rating2" type="radio" name="review[rating]" value="2">
+  <label for="rating2">2</label>
+  <input id="rating1" type="radio" name="review[rating]" value="1">
+  <label for="rating1">1</label>
+</span>
+<%= f.hidden_field :retreat_id, value: b.retreat.id %>
+<%= f.button :submit %>
+<% end %>
+<% end %>
+</div>
 </div>
 <% end %>
 </div>
