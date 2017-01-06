@@ -13,7 +13,7 @@
 <% if rev = current_user.reviews.where(retreat_id: b.retreat.id).first %>
 <p>Your Review:</p>
 <p><%= rev.comment if rev.comment %></p>
-<p><%= rev.rating %></p>
+<span class="stars"><%= rev.rating.nil? ? 0 : rev.rating %></span>
 <% else %>
 <%= simple_form_for @review do |f| %>
 <%= f.input :comment %>
