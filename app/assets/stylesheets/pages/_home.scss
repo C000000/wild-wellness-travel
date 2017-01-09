@@ -6,6 +6,8 @@
 .home-image-slider {
   position: absolute;
   background-position: center;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.9) 10%, rgba(255,209,148,0.2) 40%),
+  image-url('home_background_image_wide.jpg');
   top: 0;
   left: 0;
   width: 100%;
