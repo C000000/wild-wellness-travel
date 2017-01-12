@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'reviews/index'
-
-  get 'reviews/show'
-
-  get 'reviews/create'
-
-  get 'reviews/edit'
-
-  get 'reviews/update'
-
-  get 'reviews/destroy'
-
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
@@ -19,6 +7,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'landing' => 'pages#landing'
+  get 'about' => 'pages#about'
+  get 'blog' => 'pages#blog'
 
   resources :companies, only: [:new, :create, :update]
   get 'company_dashboard' => 'companies#dashboard'

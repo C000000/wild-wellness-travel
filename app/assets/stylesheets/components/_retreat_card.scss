@@ -2,13 +2,12 @@
   position: relative;
   margin: 30px;
   padding: 0;
-  height: 250px;
-  width: 500px;
-  color: white;
+  height: 400px;
+  width: 600px;
+  color: $grey;
   font-weight: 500;
   font-size: 20px;
-  text-shadow: 0px 1px 5px rgba(0,0,0,0.6);
-  box-shadow: 0px 5px 10px rgba(0,0,0,0.6);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
   transition: all 250ms ease;
   @media (max-width: $screen-xs) {
     width: 300px;
@@ -17,14 +16,74 @@
   }
 }
 
-.card-background-color {
+.card-name {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  z-index: 1;
+  top: 20px;
+  left: 0;
+  background-color: rgba(85,187,178,0.6);
+  p {
+    padding: 5px;
+    margin: 0 auto;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 1px 2px #000;
+  }
+}
+
+.card-info {
+  position: absolute;
   width: 100%;
-  z-index:1;
-  background: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+  height: 150px;
+  padding: 10px;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.9);
+  z-index: 1;
+  display: flex;
+}
+
+.card-left-side {
+  font-size: 16px;
+  flex: 0 0 70%;
+  border-right: 1px solid rgb(180,180,180);
+  span {
+    color: rgb(100,100,100);
+  }
+}
+
+.card-description {
+  line-height: 1.5em;
+  height: 6em;
+  overflow: hidden;
+  padding-right: 10px;
+}
+
+.card-right-side {
+  flex: 0 0 30%;
+  text-align: center;
+}
+
+.card-price {
+  font-size: 26px;
+}
+
+.blue-stars {
+  display: block;
+  width: 99px;
+  height: 18px;
+  margin: 0 auto 7px;
+  background: url(http://c.boylett.uk/generic/image_png_00004.png);
+
+}
+
+.blue-stars > em  {
+  display: block;
+  width: 99px;
+  height: 18px;
+  text-align: left;
+  background: url(http://c.boylett.uk/generic/image_png_00004.png);
+  background-position: 0 -18px;
 }
 
 .card-image {
@@ -36,35 +95,6 @@
     width: 300px;
     height: 150px;
   }
-}
-
-.card-location {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
-}
-
-.card-price {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 2;
-}
-
-.card-name {
-  position: absolute;
-  bottom: 30px;
-  left: 10px;
-  text-transform: uppercase;
-  z-index: 2;
-}
-
-.card-rating {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  z-index: 2;
 }
 
 .card-links {
