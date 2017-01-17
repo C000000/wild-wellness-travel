@@ -16,15 +16,12 @@
     </form>
 
     <!-- Pages -->
-    <%= link_to "Services", root_path, class: "navbar-wwt-item navbar-wwt-link" %>
-    <%= link_to "Preferred Wellness Experiences", root_path, class: "navbar-wwt-item navbar-wwt-link" %>
-    <%= link_to "Reatreat Planning", retreats_path, class: "navbar-wwt-item navbar-wwt-link  #{cp(retreats_path)}" %>
-    <% if user_signed_in? && current_user.company %>
-    <%= link_to "Business Dashboard", company_dashboard_path, class: "navbar-wwt-item navbar-wwt-link #{cp(company_dashboard_path)}" %>
-    <% else %>
-    <%= link_to "Become a seller?", new_company_path, class: "navbar-wwt-item navbar-wwt-link #{cp(new_company_path)}" %>
-    <% end %>
-    <%= link_to "Contact", root_path, class: "navbar-wwt-item navbar-wwt-link" %>
+    <%= link_to "Home", landing_path, class: "navbar-wwt-item navbar-wwt-link" %>
+    <%= link_to "Upcoming Retreats", retreats_path, class: "navbar-wwt-item navbar-wwt-link #{cp(retreats_path)}" %>
+    <%= link_to "Preferred Properties", root_path, class: "navbar-wwt-item navbar-wwt-link" %>
+    <%= link_to "Retreat Leaders", root_path, class: "navbar-wwt-item navbar-wwt-link" %>
+    <%= link_to "Blog", blog_path, class: "navbar-wwt-item navbar-wwt-link #{cp(blog_path)}" %>
+    <%= link_to "About", about_path, class: "navbar-wwt-item navbar-wwt-link #{cp(about_path)}" %>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
