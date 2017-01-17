@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'blog' => 'pages#blog'
 
-  resources :companies, only: [:new, :create, :update]
-  get 'company_dashboard' => 'companies#dashboard'
+  resources :properties
+  get 'new_leader' => 'properties#new_leader'
+  put 'create_leader' => 'properties#create_leader'
+  get 'retreat_leaders' => 'properties#retreat_leaders'
 
   resources :retreats
   resources :bookings

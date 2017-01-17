@@ -1,13 +1,8 @@
 class CompaniesController < ApplicationController
   def new
-    redirect_to company_dashboard_path if current_user.company
-    @company = Company.new
   end
 
   def create
-    @user = current_user
-    @user.create_company(company_params)
-    redirect_to company_dashboard_path
   end
 
   def update
@@ -18,6 +13,11 @@ class CompaniesController < ApplicationController
   def dashboard
     @company = current_user.company
     @retreat = Retreat.new
+  end
+
+  # Retreat Leader
+  def new_leader
+    @user = current_user
   end
 
 

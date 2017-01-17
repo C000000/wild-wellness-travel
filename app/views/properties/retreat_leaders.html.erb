@@ -1,0 +1,5 @@
+<%= link_to "Become a Retreat Leader", new_leader_path %>
+
+<% @leaders.each do |l| %>
+	<%= l.first_name %>
+<% end %>
