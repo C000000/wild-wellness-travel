@@ -6,18 +6,9 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find(params[:id])
-    redirect_to company_dashboard_path if @company.update(company_params)
   end
 
   def dashboard
-    @company = current_user.company
-    @retreat = Retreat.new
-  end
-
-  # Retreat Leader
-  def new_leader
-    @user = current_user
   end
 
 

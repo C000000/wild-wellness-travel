@@ -6,6 +6,7 @@
     <div class="company-registration-form">
       <%= simple_form_for @user, url: create_leader_path(@user), method: :put do |f| %>
       <%= f.input :first_name, autofocus: true %>
+      <%= f.input :last_name %>
       <%= f.input :country, priority: ["United States"] %>
       <%= f.input :state, collection: User::STATES, prompt: "Select state" %>
       <%= f.input :city %>

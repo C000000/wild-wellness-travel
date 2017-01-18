@@ -1,0 +1,45 @@
+.leader-card-wrapper {
+	margin: 10px auto; 
+	position: relative;
+	width: 250px;
+	height: 350px;
+	text-align: center;
+	padding: 10px 5px;
+	background: linear-gradient(#64b3f4, #c2e59c);
+	box-shadow: 0 5px 10px rgba(0,0,0,0.6);
+}
+
+.leader-card-wrapper .leader-name {
+	margin: 10px auto;
+	display: inline-block;
+	p {
+		padding: 0 5px;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 2em;
+		border-bottom: 1px solid $grey;
+	}
+}
+
+.leader-card-wrapper .leader-bio {
+	text-align: left;
+	font-size: 15px;
+}
+
+.leader-card-wrapper .leader-links {
+	position: absolute;
+	top: 15px;
+	left: 10px;
+	background-color: transparent;
+	opacity: 0;
+	transition: opacity 1s ease;
+	a {
+		font-size: 25px;
+		text-decoration: none;
+		color: white;
+	}
+}
+
+.leader-card-wrapper:hover .leader-links {
+	opacity: 1;
+}

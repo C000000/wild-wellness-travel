@@ -1,5 +1,13 @@
-<%= link_to "Become a Retreat Leader", new_leader_path %>
+<div class="text-center">
+	<%= link_to "Become a Retreat Leader", new_leader_path, class: "btn btn-primary" unless current_user.company_owner %>
+</div>
 
-<% @leaders.each do |l| %>
-	<%= l.first_name %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<% @leaders.each do |leader| %>
+		<div class="col-xs-12 col-sm-6 col-lg-4">
+			<%= render 'leader_card', leader: leader %>
+		</div>
+		<% end %>
+	</div>
+</div>

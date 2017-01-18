@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:retreat_leaders, :index, :show]
+
   def index
   end
 
@@ -48,6 +50,7 @@ class PropertiesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :phone_number, :street_address, :country, :city, :state)
+    params.require(:user).permit(:first_name, :last_name, :phone_number, :street_address, 
+      :country, :city, :state, :profile_picture)
   end
 end
