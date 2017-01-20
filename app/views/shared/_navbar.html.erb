@@ -48,9 +48,16 @@
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
+          <% if user_signed_in? && current_user.company_owner %>
+          <li>
+            <%= link_to leader_dashboard_path do %>
+            <i class="fa fa-address-card"></i> <%= t(".dashboard", default: "Dashboard") %>
+            <% end %>
+          </li>
+          <% end %>
           <li>
             <%= link_to bookings_path do %>
-            <i class="fa fa-book"></i>  <%= t(".profile", default: "My Bookings") %>
+            <i class="fa fa-book"></i>  <%= t(".bookings", default: "My Bookings") %>
             <% end %>
           </li>
           <li>

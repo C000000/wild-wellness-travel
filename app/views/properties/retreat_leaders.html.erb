@@ -1,5 +1,5 @@
 <div class="text-center">
-	<%= link_to "Become a Retreat Leader", new_leader_path, class: "btn btn-primary" unless current_user.company_owner %>
+	<%= link_to "Become a Retreat Leader", new_leader_path, class: "btn btn-primary" unless current_user && current_user.company_owner %>
 </div>
 
 <div class="container">

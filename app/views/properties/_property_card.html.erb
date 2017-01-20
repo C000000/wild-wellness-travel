@@ -1,0 +1,16 @@
+<div class="property-card-layout">
+	<div class="row">
+		<div class="col-xs-12 col-lg-6">
+			<div class="property-pic">
+			<%= image_tag "http://res.cloudinary.com/dijinio/image/upload/#{property.pictures.first.path}", class: "property-card-image" if property.pictures.first %>
+				<h3><%= property.name %></h3>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="property-info">
+				<h4>Location: <%= "#{property.city}, #{property.country_name}" %></h4>
+				<p><%= property.description %></p>
+			</div>
+		</div>
+	</div>
+</div>

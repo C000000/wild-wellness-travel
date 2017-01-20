@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'new_leader' => 'properties#new_leader'
   put 'create_leader' => 'properties#create_leader'
   get 'retreat_leaders' => 'properties#retreat_leaders'
+  get 'leader_dashboard' => 'properties#leader_dashboard'
 
   resources :retreats
   resources :bookings

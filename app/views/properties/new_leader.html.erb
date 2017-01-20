@@ -5,16 +5,21 @@
     <small>(Custom text for now)</small>
     <div class="company-registration-form">
       <%= simple_form_for @user, url: create_leader_path(@user), method: :put do |f| %>
+      <div class="inline-fields">
       <%= f.input :first_name, autofocus: true %>
       <%= f.input :last_name %>
+      </div>
+      <div class="inline-fields">
       <%= f.input :country, priority: ["United States"] %>
       <%= f.input :state, collection: User::STATES, prompt: "Select state" %>
       <%= f.input :city %>
+      </div>
       <%= f.input :street_address %>
       <%= f.input :phone_number %>
       <% if !@user.profile_picture && !@user.facebook_picture_url %>
       <%= f.input :profile_picture, as: :attachinary %>
       <% end %>
+      <%= f.input :biography %>
       <div class="inline-fields">
       <%= f.button :submit, "Continue", class: "btn btn-primary" %>
       <%= link_to 'Cancel', :back, class: "btn btn-warning" %>

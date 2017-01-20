@@ -4,7 +4,7 @@
     <p><%= retreat.name %></p>
   </div>
   <!-- For company dashboard -->
-  <% if current_page?(root_path) %>
+  <% if current_page?(leader_dashboard_path) %>
   <div class="card-links company-links">
     <div>
       <%= link_to "Edit", edit_retreat_path(retreat), class: "btn btn-info" %>

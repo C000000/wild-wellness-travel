@@ -1,0 +1,34 @@
+.property-card-layout {
+	margin: 20px auto;
+}
+
+.property-pic {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  color: $grey;
+  font-weight: 500;
+  font-size: 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  transition: all 250ms ease;
+  h3 {
+  	text-transform: uppercase;
+  	padding: 5px 10px;
+  	font-weight: 300;
+  	background-color: rgba(135,86,167,0.6);
+  	color: white;
+  	position: absolute;
+  	left: 0;
+  	top: 0;
+  }
+}
+
+.property-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

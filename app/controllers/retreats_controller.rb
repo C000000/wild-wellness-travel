@@ -14,8 +14,9 @@ class RetreatsController < ApplicationController
   end
 
   def create
-    @company = current_user.company
-    @retreat = @company.retreats.new(retreat_params)
+    @property = current_user.properties.first
+    @retreat = @property.retreats.new(retreat_params)
+    raise
     redirect_to root_path if @retreat.save
   end
 
