@@ -1,0 +1,23 @@
+<%= simple_form_for property do |f| %>
+<div class="inline-fields">
+	<%= f.input :name, autofocus: true %>
+	<%= f.input :property_type, collection: Property::PROPERTY_TYPE, prompt: "Select property type" %>
+	<%= f.input :guest_number %>
+	</div>
+	<div class="inline-fields">
+	<%= f.input :country, priority: ["United States"] %>
+    <%= f.input :state, collection: User::STATES, prompt: "Select state" %>
+    <%= f.input :city %>
+    </div>
+	<%= f.input :street_address %>
+	<div class="inline-fields">
+	<%= f.input :phone_number %>
+	<%= f.input :email %>
+	</div>
+	<%= f.input :description %>
+	<%= f.input :pictures, as: :attachinary %>
+	<div class="text-center">
+	<%= f.button :submit, class: "btn btn-primary" %>
+	<%= link_to "Cancel", properties_path, class: "btn btn-danger" %>
+</div>
+<% end %>

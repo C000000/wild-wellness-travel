@@ -14,9 +14,10 @@ class RetreatsController < ApplicationController
   end
 
   def create
-    @company = current_user.company
-    @retreat = @company.retreats.new(retreat_params)
-    redirect_to company_dashboard_path if @retreat.save
+    @property = current_user.properties.first
+    @retreat = @property.retreats.new(retreat_params)
+    raise
+    redirect_to root_path if @retreat.save
   end
 
   def edit
@@ -31,7 +32,7 @@ class RetreatsController < ApplicationController
   def destroy
     @retreat = Retreat.find(params[:id])
     @retreat.destroy
-    redirect_to company_dashboard_path
+    redirect_to root_path
   end
 
   def retreat_params

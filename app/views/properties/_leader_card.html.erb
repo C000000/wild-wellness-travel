@@ -1,0 +1,18 @@
+<div class="leader-card-wrapper">
+	<div class="avatar-pic">
+		<% if leader.profile_picture %>
+		<%= cl_image_tag leader.profile_picture.path, class: "avatar-xxl" %>
+		<% else %>
+		<%= image_tag leader.facebook_picture_url, class: "avatar-xxl" %>
+		<% end %>
+	</div>
+	<div class="leader-name">
+		<p><%= "#{leader.first_name} #{leader.last_name}" %></p>
+	</div>
+	<div class="leader-bio">
+		<p><%= leader.biography %></p>
+	</div>
+	<div class="leader-links">
+		<a href="mailto:<%= leader.email %>"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+	</div>
+</div>

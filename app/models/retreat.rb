@@ -1,11 +1,11 @@
 class Retreat < ApplicationRecord
-	belongs_to :company
+	belongs_to :property
 	has_many :reviews, dependent: :destroy
-  has_many :bookings, dependent: :destroy
+  	has_many :bookings, dependent: :destroy
 
 	has_attachments :pictures, maximum: 10
 
-	validates :country, :city, :street_address, :price, presence: true
+	validates :country, :city, :price, presence: true
 
 	geocoded_by :full_address
 	after_validation :geocode, if: :full_address_changed?

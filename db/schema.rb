@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226183038) do
+ActiveRecord::Schema.define(version: 20170120162748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,25 @@ ActiveRecord::Schema.define(version: 20161226183038) do
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.string   "name"
+    t.string   "property_type"
+    t.integer  "guest_number"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "street_address"
+    t.string   "phone_number"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "description"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
+  end
+
   create_table "retreats", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
@@ -76,7 +95,9 @@ ActiveRecord::Schema.define(version: 20161226183038) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "company_id"
+    t.integer  "property_id"
     t.index ["company_id"], name: "index_retreats_on_company_id", using: :btree
+    t.index ["property_id"], name: "index_retreats_on_property_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -122,6 +143,7 @@ ActiveRecord::Schema.define(version: 20161226183038) do
     t.string   "google_picture_url"
     t.float    "latitude"
     t.float    "longitude"
+    t.text     "biography"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -130,6 +152,7 @@ ActiveRecord::Schema.define(version: 20161226183038) do
   add_foreign_key "bookings", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "retreats", "companies"
+  add_foreign_key "retreats", "properties"
   add_foreign_key "reviews", "retreats"
   add_foreign_key "reviews", "users"
 end
