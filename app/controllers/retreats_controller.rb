@@ -16,7 +16,6 @@ class RetreatsController < ApplicationController
   def create
     @property = current_user.properties.first
     @retreat = @property.retreats.new(retreat_params)
-    raise
     redirect_to root_path if @retreat.save
   end
 
@@ -36,8 +35,8 @@ class RetreatsController < ApplicationController
   end
 
   def retreat_params
-    params.require(:retreat).permit(:name, :phone_number, :email,
-      :street_address, :country, :city, :state, :video, {pictures: []},
-      :price, :description)
+    params.require(:retreat).permit(:name, :start_date, :end_date, :phone_number, 
+      :email, :available_spots, :street_address, :country, :city, :state, :video, 
+      {pictures: []}, :price, :description)
   end
 end

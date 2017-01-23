@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center"><%= @property.name %> Dashboard</h1>
+  <h1 class="text-center"><%= "#{current_user.first_name}'s" %> Dashboard</h1>
   <hr>
   <div class="row">
     <div class="col-xs-12 col-sm-3">
@@ -25,9 +25,12 @@
     <div class="col-xs-12 col-sm-9">
       <div class="dashboard-results">
         <div id="retreat-list" class="dashboard-content">
-          <% if @property.retreats.first %>
-          <% @property.retreats.each do |ret| %>
+        <% @properties.each do |prop| %>
+          <% if prop.retreats.first %>
+          <h4><%= "#{prop.name} Retreats" %></h4>
+          <% prop.retreats.each do |ret| %>
           <%= render 'retreats/retreat_card', retreat: ret %>
+          <% end %>
           <% end %>
           <% end %>
         </div>
@@ -41,7 +44,7 @@
           <%= render 'retreats/new_retreat_form', retreat: @retreat %>
         </div>
         <div id="edit-property-details" class="dashboard-content">
-          <%= render 'property_form', property: @property %>
+          <%#= render 'property_form', property: @property %>
         </div>
       </div>
     </div>

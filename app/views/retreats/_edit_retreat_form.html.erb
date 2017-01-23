@@ -3,14 +3,23 @@
 <div class="inline-fields">
 <%= f.input :name %>
 <%= f.input :price %>
+<%= f.input :available_spots %>
 </div>
 <div class="inline-fields">
 <%= f.input :phone_number %>
 <%= f.input :email %>
 </div>
 <div class="inline-fields">
+<label for="datepickerIn">From:</label>
+	<input type="text" id="datepickerIn" name="retreat[start_date]"
+	placeholder="<%= retreat.start_date.strftime('%d %B %Y') %>" readonly="readonly" style="width: 150px">
+	<label for="datepickerOut">To:</label>
+	<input type="text" id="datepickerOut" name="retreat[end_date]"
+	placeholder="<%= retreat.end_date.strftime('%d %B %Y') %>" readonly="readonly" style="width: 150px">
+	</div>
+<div class="inline-fields">
 <%= f.input :country, priority: ["United States"] %>
-<%= f.input :state %>
+<%= f.input :state, collection: User::STATES, prompt: "Select State" %>
 <%= f.input :city %>
 </div>
 <%= f.input :street_address %>
