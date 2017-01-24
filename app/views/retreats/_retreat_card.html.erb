@@ -1,7 +1,7 @@
 <div class="card-layout">
-  <%= cl_image_tag retreat.pictures.last.path, size: '600x400', crop: :thumb, gravity: :center, class: "card-image" if retreat.pictures.first %>
+  <%= image_tag "http://res.cloudinary.com/dijinio/image/upload/#{property.pictures.last.path}", class: "retreat-card-image" if property.pictures.last %>
   <div class="card-name">
-    <p><%= retreat.name %></p>
+    <p><%= property.name %></p>
   </div>
   <!-- For company dashboard -->
   <% if current_page?(leader_dashboard_path) %>
@@ -12,14 +12,15 @@
     </div>
   </div>
   <% elsif current_page?(retreats_path) %>
-  <%= link_to "#", retreat_path(retreat), class: "card-link" %>
+  <%= link_to "", retreat_path(retreat), class: "card-link" %>
   <% end %>
   <div class="card-info">
     <div class="card-left-side">
-        <p>Location: <span><%= "#{retreat.city}, #{retreat.country}" %></span></p>
-        <div class="card-description">
-        <p><span><%= retreat.description %></span></p>
-        </div>
+      <p>Location: <span><%= "#{property.city}, #{property.state || property.country}" %></span></p>
+      <p>When: <span><%= "#{retreat.start_date.strftime('%d %B')} #{retreat.end_date.strftime('%d %B')}" %></span></p>
+      <div class="card-description">
+        <p><span><%= property.description %></span></p>
+      </div>
     </div>
     <div class="card-right-side">
       <div class="card-price">
@@ -37,3 +38,30 @@
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+<script>
+  $(function() {
+    var start_date = new Date();
+    var end_date = new Date();
+    $("#datepickerIn").datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: new Date(),
+      defaultDate: new Date(),
+      onSelect: function(sDate) {
+        start_date = new Date(sDate);
+        $("#datepickerOut").val("");
+        $(".total-price-result p").text("");
+        $("#datepickerOut").datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: start_date,
+          defaultDate: start_date,
+          onSelect: function(eDate) {
+            end_date = new Date(eDate);
+          }
+        });
+      }
+    });
+  } );
+</script>
+<% end %>

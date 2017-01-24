@@ -22,6 +22,7 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    @property = Property.find(params[:id])
   end
 
   def update
@@ -29,7 +30,7 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       redirect_to leader_dashboard_path
     else
-      render 'leader_dashboard'
+      render 'edit'
     end
   end
 
@@ -56,7 +57,8 @@ class PropertiesController < ApplicationController
   end
 
   def leader_dashboard
-    @property = current_user.properties.first
+    @properties = current_user.properties
+    @property = Property.new
     @retreat = Retreat.new
   end
 

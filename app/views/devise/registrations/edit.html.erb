@@ -27,6 +27,7 @@
         end_year: Time.now.year - 8, order: [:day, :month, :year] %>
         <%= f.input :gender, collection: User::GENDER, prompt: "Select gender", label: "I am:" %>
       </div>
+      <%= f.input :biography if current_user.company_owner %>
     </div>
 
     <div id="contact-info" class="tab-content">
