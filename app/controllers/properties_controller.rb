@@ -57,6 +57,7 @@ class PropertiesController < ApplicationController
 
   def leader_dashboard
     @properties = current_user.properties
+    @property = Property.new
     @retreat = Retreat.new
   end
 
