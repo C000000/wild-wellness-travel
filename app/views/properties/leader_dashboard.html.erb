@@ -32,7 +32,7 @@
           <% if prop.retreats.first %>
           <h4><%= "#{prop.name} Retreats" %></h4>
           <% prop.retreats.each do |ret| %>
-          <%= render 'retreats/retreat_card', retreat: ret %>
+          <%= render 'retreats/retreat_card', retreat: ret, property: prop %>
           <% end %>
           <% end %>
           <% end %>

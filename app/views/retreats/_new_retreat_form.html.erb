@@ -1,25 +1,16 @@
 <%= simple_form_for retreat do |f| %>
-<div class="col-xs-12 col-sm-4">
-	<%= f.input :pictures, as: :attachinary, label: "Pictures (last uploaded will be a card cover picture)" %>
-</div>
-<div class="col-xs-12 col-sm-8">
-	<%= f.input :name %>
-	<label for="datepickerIn">From:</label>
-	<input type="text" id="datepickerIn" name="retreat[start_date]"
-	placeholder="yyyy-dd-mm" readonly="readonly" style="width: 150px">
-	<label for="datepickerOut">To:</label>
-	<input type="text" id="datepickerOut" name="retreat[end_date]"
-	placeholder="yyyy-dd-mm" readonly="readonly" style="width: 150px">
+<div class="inline-fields">
+<%= f.input :property_id, label: "Property of Retreat", collection: current_user.properties, prompt: "Choose property" %>
 	<%= f.input :available_spots %>
 	<%= f.input :price %>
-	<%= f.input :phone_number %>
-	<%= f.input :email %>
-	<%= f.input :country, priority: ["United States"] %>
-	<%= f.input :state, collection: User::STATES, prompt: "Select State" %>
-	<%= f.input :city %>
-	<%= f.input :street_address %>
+</div>
+<h4>Select Dates</h4>
+<label for="datepickerIn">Start:</label>
+<input type="text" id="datepickerIn" name="retreat[start_date]" placeholder="yyyy-dd-mm" readonly="readonly" style="width: 150px">
+<label for="datepickerOut">End:</label>
+<input type="text" id="datepickerOut" name="retreat[end_date]" placeholder="yyyy-dd-mm" readonly="readonly" style="width: 150px">
+<div class="inline-fields">
 	<%= f.input :video %>
-	<%= f.input :description %>
 </div>
 <div class="text-center">
 	<%= f.button :submit, class: "btn btn-primary" %>

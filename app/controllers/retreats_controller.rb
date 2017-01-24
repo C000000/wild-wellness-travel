@@ -7,6 +7,7 @@ class RetreatsController < ApplicationController
 
   def show
     @retreat = Retreat.find(params[:id])
+    @property = @retreat.property
     @booking = Booking.new
   end
 
@@ -14,9 +15,12 @@ class RetreatsController < ApplicationController
   end
 
   def create
-    @property = current_user.properties.first
-    @retreat = @property.retreats.new(retreat_params)
-    redirect_to root_path if @retreat.save
+    @retreat = Retreat.new(retreat_params)
+    if @retreat.save
+      redirect_to leader_dashboard_path
+    else
+      raise
+    end
   end
 
   def edit
@@ -35,7 +39,7 @@ class RetreatsController < ApplicationController
   end
 
   def retreat_params
-    params.require(:retreat).permit(:name, :start_date, :end_date, :phone_number, 
+    params.require(:retreat).permit(:name, :property_id, :start_date, :end_date, :phone_number, 
       :email, :available_spots, :street_address, :country, :city, :state, :video, 
       {pictures: []}, :price, :description)
   end

@@ -1,7 +1,7 @@
 <div class="card-layout">
-  <%= image_tag "http://res.cloudinary.com/dijinio/image/upload/#{retreat.pictures.last.path}", class: "retreat-card-image" if retreat.pictures.last %>
+  <%= image_tag "http://res.cloudinary.com/dijinio/image/upload/#{property.pictures.last.path}", class: "retreat-card-image" if property.pictures.last %>
   <div class="card-name">
-    <p><%= retreat.name %></p>
+    <p><%= property.name %></p>
   </div>
   <!-- For company dashboard -->
   <% if current_page?(leader_dashboard_path) %>
@@ -12,14 +12,14 @@
     </div>
   </div>
   <% elsif current_page?(retreats_path) %>
-  <%= link_to "#", retreat_path(retreat), class: "card-link" %>
+  <%= link_to "", retreat_path(retreat), class: "card-link" %>
   <% end %>
   <div class="card-info">
     <div class="card-left-side">
-      <p>Location: <span><%= "#{retreat.city}, #{retreat.state || retreat.country}" %></span></p>
+      <p>Location: <span><%= "#{property.city}, #{property.state || property.country}" %></span></p>
       <p>When: <span><%= "#{retreat.start_date.strftime('%d %B')} #{retreat.end_date.strftime('%d %B')}" %></span></p>
       <div class="card-description">
-        <p><span><%= retreat.description %></span></p>
+        <p><span><%= property.description %></span></p>
       </div>
     </div>
     <div class="card-right-side">

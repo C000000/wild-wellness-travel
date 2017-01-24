@@ -1,5 +1,5 @@
 <div class="retreat-pictures">
-	<% @retreat.pictures.each do |pic| %>
+	<% @property.pictures.each do |pic| %>
   <div class="ret-pic" style='background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%), url(<%= "http://res.cloudinary.com/dijinio/image/upload/#{pic.path}" %>)'>
   </div>
   <% end %>
@@ -15,7 +15,7 @@
       </div>
       <div class="retreat-results">
         <div id="retreat-details" class="retreat-content">
-          <%= "#{@retreat.name} in #{@retreat.city}" %>
+          <%= "#{@property.name} in #{@property.city}" %>
           <br>
           <%= "Price: #{@retreat.price.to_i}$" %>
           <br>
@@ -24,7 +24,7 @@
           <br>
         </div>
         <div id="retreat-photos" class="retreat-content">
-          <% @retreat.pictures.each do |pic| %>
+          <% @property.pictures.each do |pic| %>
           <%= cl_image_tag(pic.path, height: 150) %>
           <% end %>
         </div>
@@ -39,9 +39,9 @@
           <% end %>
         </div>
         <div id="retreat-contact" class="retreat-content">
-          <%= "Email: #{@retreat.email}" %>
+          <%= "Email: #{@property.email}" %>
           <br>
-          <%= "Phone: #{@retreat.phone_number}" %>
+          <%= "Phone: #{@property.phone_number}" %>
         </div>
       </div>
     </div>
@@ -68,9 +68,9 @@
 		handler.buildMap({ internal: {id: 'retreat-map'}}, function(){
 			markers = handler.addMarkers([
 			{
-				lat: <%= @retreat.latitude %>,
-				lng: <%= @retreat.longitude %>,
-				infowindow: "<%= @retreat.street_address %>"
+				lat: <%= @property.latitude %>,
+				lng: <%= @property.longitude %>,
+				infowindow: "<%= @property.street_address %>"
 			}
 			]);
 			handler.bounds.extendWith(markers);
