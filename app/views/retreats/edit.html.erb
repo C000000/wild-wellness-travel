@@ -2,15 +2,16 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 			<h3 class="text-center">Card Preview</h3>
-			<%= render 'retreat_card', retreat: @retreat %>	
+			<%= render 'retreat_card', retreat: @retreat, property: @retreat.property %>
+		</div>
+		<div class="col-xs-12 col-sm-6">
 			<h3 class="text-center">Map Preview</h3>
 			<div id="map"></div>
 		</div>
-		<div class="col-xs-12 col-sm-6">
-			<h3 class="text-center">Retreat Details</h3>
-			<%= render 'edit_retreat_form', retreat: @retreat %>	
-		</div>
 	</div>
+	<hr>
+	<%= render 'edit_retreat_form', retreat: @retreat, property: @retreat.property %>
+</div>
 </div>
 
 <% content_for(:after_js) do %>

@@ -1,5 +1,5 @@
 class RetreatsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @retreats = Retreat.all
@@ -17,7 +17,7 @@ class RetreatsController < ApplicationController
   def create
     @retreat = Retreat.new(retreat_params)
     if @retreat.save
-      redirect_to leader_dashboard_path
+      redirect_to retreat_list_path
     else
       raise
     end
@@ -29,7 +29,11 @@ class RetreatsController < ApplicationController
 
   def update
     @retreat = Retreat.find(params[:id])
-    redirect_to edit_retreat_path if @retreat.update(retreat_params)
+    if @retreat.update(retreat_params)
+      redirect_to edit_retreat_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -40,7 +44,6 @@ class RetreatsController < ApplicationController
 
   def retreat_params
     params.require(:retreat).permit(:name, :property_id, :start_date, :end_date, :phone_number, 
-      :email, :available_spots, :street_address, :country, :city, :state, :video, 
-      {pictures: []}, :price, :description)
+      :email, :available_spots, :video, :price, :description)
   end
 end

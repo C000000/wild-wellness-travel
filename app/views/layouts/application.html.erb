@@ -11,6 +11,7 @@
 </head>
 <body>
   <%= render 'shared/navbar' unless current_page?(landing_path) %>
+  <%= render 'shared/admin_panel' if user_signed_in? && current_user.company_owner %>
   <%= render 'shared/flashes' unless current_page?(landing_path) %>
   <div class="page-wrapper">
   <%= yield %>

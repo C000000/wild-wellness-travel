@@ -39,7 +39,7 @@
         </div>
         <div id="properties-list" class="dashboard-content">
           <% @properties.each do |prop| %>
-          <%= render 'property_card', property: prop %>
+          <%= render 'properties/property_card', property: prop %>
           <% end %>
         </div>
         <div id="booking-list" class="dashboard-content">
@@ -49,7 +49,7 @@
           <h1>COMPLETED</h1>
         </div>
         <div id="new-property" class="dashboard-content">
-          <%= render 'property_form', property: @property %>
+          <%= render 'properties/property_form', property: @property %>
         </div>
         <div id="new-retreat" class="dashboard-content">
           <%= render 'retreats/new_retreat_form', retreat: @retreat %>

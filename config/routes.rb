@@ -11,14 +11,15 @@ Rails.application.routes.draw do
   get 'blog' => 'pages#blog'
 
   resources :properties
-  get 'new_leader' => 'properties#new_leader'
-  put 'create_leader' => 'properties#create_leader'
-  get 'retreat_leaders' => 'properties#retreat_leaders'
-  get 'leader_dashboard' => 'properties#leader_dashboard'
-
+  resources :retreat_leaders
   resources :retreats
   resources :bookings
   resources :reviews
+
+  # Admin
+  get 'property_list' => 'site_admin#property_list'
+  get 'leader_list' => 'site_admin#leader_list'
+  get 'retreat_list' => 'site_admin#retreat_list'
 
   mount Attachinary::Engine => "/attachinary"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

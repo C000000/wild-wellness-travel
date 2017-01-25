@@ -1,0 +1,2 @@
+class RetreatLeader < ApplicationRecord
+end
