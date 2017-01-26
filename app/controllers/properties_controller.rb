@@ -28,7 +28,7 @@ class PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
     if @property.update(property_params)
-      redirect_to property_list_path
+      redirect_to edit_property_path(@property)
     else
       render 'edit'
     end

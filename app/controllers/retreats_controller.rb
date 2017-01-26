@@ -12,19 +12,21 @@ class RetreatsController < ApplicationController
   end
 
   def new
+    @retreat = Retreat.new
   end
 
   def create
     @retreat = Retreat.new(retreat_params)
     if @retreat.save
-      redirect_to retreat_list_path
+      redirect_to edit_retreat_path(@retreat)
     else
-      raise
+      render 'new'
     end
   end
 
   def edit
     @retreat = Retreat.find(params[:id])
+    @property = @retreat.property
   end
 
   def update

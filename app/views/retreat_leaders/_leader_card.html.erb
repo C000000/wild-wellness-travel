@@ -1,10 +1,6 @@
 <div class="leader-card-wrapper">
 	<div class="avatar-pic">
-		<% if leader.profile_picture %>
-		<%= cl_image_tag leader.profile_picture.path, class: "avatar-xxl" %>
-		<% else %>
-		<%= image_tag leader.facebook_picture_url, class: "avatar-xxl" %>
-		<% end %>
+		<%= cl_image_tag leader.pictures.last.path, class: "avatar-xxl" if leader.pictures.last %>
 	</div>
 	<div class="leader-name">
 		<p><%= "#{leader.first_name} #{leader.last_name}" %></p>
@@ -13,6 +9,11 @@
 		<p><%= leader.biography %></p>
 	</div>
 	<div class="leader-links">
+		<% if current_page?(leader_list_path) %>
+		<%= link_to "Edit", edit_retreat_leader_path(leader), class: "btn-xs btn-warning" %>
+		<%= link_to "Remove", retreat_leader_path(leader), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn-xs btn-danger" %>
+		<% else %>
 		<a href="mailto:<%= leader.email %>"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+		<% end %>
 	</div>
 </div>

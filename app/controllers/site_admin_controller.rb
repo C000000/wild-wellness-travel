@@ -4,7 +4,7 @@ class SiteAdminController < ApplicationController
   end
 
   def leader_list
-    
+    @leaders = RetreatLeader.all
   end
 
   def retreat_list

@@ -1,5 +1,5 @@
 <%= simple_form_for retreat do |f| %>
-<%= f.input :property_id, label: "Property of Retreat", collection: current_user.properties, prompt: "Choose property" %>
+<%= f.input :property_id, label: "Property of Retreat", collection: Property.all, prompt: "Choose property" %>
 <%= f.input :name %>
 <%= f.input :price %>
 <%= f.input :available_spots %>
@@ -11,6 +11,8 @@
 <%= f.input :description, input_html: {class: 'description-text-area'} %>
 <%= f.button :submit, "Preview & Update", class: "btn btn-primary" %>
 <%= link_to "Back", retreat_list_path, class: "btn btn-danger" %>
+<br>
+<br>
 <% end %>
 
 <% content_for(:after_js) do %>

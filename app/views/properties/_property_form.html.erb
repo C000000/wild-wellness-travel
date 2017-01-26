@@ -9,13 +9,15 @@
 	<%= f.input :country, priority: ["United States"] %>
 	<%= f.input :state, collection: User::STATES, prompt: "Select state" %>
 	<%= f.input :city %>
-	<%#= f.input :street_address %>
+	<%= f.input :street_address %>
 	<%= f.input :phone_number %>
 	<%= f.input :email %>
-	<%= f.input :description %>
+	<%= f.input :description, input_html: {class: 'description-text-area'} %>
 </div>
 <div class="text-center">
 	<%= f.button :submit, class: "btn btn-primary" %>
-	<%= link_to "Cancel", properties_path, class: "btn btn-danger" %>
+	<%= link_to "Back", property_list_path, class: "btn btn-danger" %>
 </div>
+<br>
+<br>
 <% end %>

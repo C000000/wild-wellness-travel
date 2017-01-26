@@ -14,15 +14,30 @@ class RetreatLeadersController < ApplicationController
 
   def create
     @leader = RetreatLeader.new(retreat_leader_params)
+    if @leader.save 
+      redirect_to leader_list_path
+    else
+      render 'new'
+    end
   end
 
   def edit
+    @leader = RetreatLeader.find(params[:id])
   end
 
   def update
+    @leader = RetreatLeader.find(params[:id])
+    if @leader.update(retreat_leader_params)
+      redirect_to leader_list_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @leader = RetreatLeader.find(params[:id])
+    @leader.destroy
+    redirect_to leader_list_path
   end
 
   def dashboard
