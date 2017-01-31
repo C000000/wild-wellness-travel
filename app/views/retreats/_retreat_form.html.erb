@@ -1,5 +1,6 @@
 <%= simple_form_for retreat do |f| %>
 <%= f.input :property_id, label: "Property of Retreat", collection: Property.all, prompt: "Choose property" %>
+<%= f.association :retreat_leaders, as: :check_boxes, label: "Choose Retreat Leaders" %>
 <%= f.input :name %>
 <%= f.input :price %>
 <%= f.input :available_spots %>
@@ -9,7 +10,7 @@
 <%= f.input :end_date, as: :string, input_html: { id: 'datepickerOut', readonly: 'readonly', style: 'width: 150px' } %>
 <%= f.input :video %>
 <%= f.input :description, input_html: {class: 'description-text-area'} %>
-<%= f.button :submit, "Preview & Update", class: "btn btn-primary" %>
+<%= f.button :submit, class: "btn btn-primary" %>
 <%= link_to "Back", retreat_list_path, class: "btn btn-danger" %>
 <br>
 <br>
