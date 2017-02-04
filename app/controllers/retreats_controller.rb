@@ -16,9 +16,11 @@ class RetreatsController < ApplicationController
   end
 
   def create
-    raise
-    @retreat = Retreat.new(retreat_params)
+    @retreat = Retreat.new(retreat_params.except(:retreat_leaders))
     if @retreat.save
+      retreat_params[:retreat_leaders].each do |r|
+        RetreatLeader.find(r).update(retreat_id: @retreat.id) unless r.empty?
+      end
       redirect_to edit_retreat_path(@retreat)
     else
       render 'new'
@@ -46,7 +48,7 @@ class RetreatsController < ApplicationController
   end
 
   def retreat_params
-    params.require(:retreat).permit(:name, :property_id, :retreat_leader_ids, :start_date, :end_date, :phone_number, 
-      :email, :available_spots, :video, :price, :description)
+    params.require(:retreat).permit(:name, :property_id, :start_date, :end_date, :phone_number, 
+      :email, :available_spots, :video, :price, :description, :retreat_leaders => [])
   end
 end

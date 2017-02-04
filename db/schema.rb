@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20170125120914) do
   add_foreign_key "bookings", "retreats"
   add_foreign_key "bookings", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "retreat_leaders", "retreats"
   add_foreign_key "retreats", "companies"
   add_foreign_key "retreats", "properties"
   add_foreign_key "reviews", "retreats"

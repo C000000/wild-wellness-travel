@@ -1,6 +1,10 @@
 <%= simple_form_for retreat do |f| %>
 <%= f.input :property_id, label: "Property of Retreat", collection: Property.all, prompt: "Choose property" %>
-<%= f.association :retreat_leaders, as: :check_boxes, label: "Choose Retreat Leaders" %>
+<% if current_page?(new_retreat_path) %>
+<%= f.input :retreat_leaders, collection: RetreatLeader.where(retreat_id: nil), as: :check_boxes, label: "Choose Retreat Leaders"%>
+<% else %>
+<%= f.input :retreat_leaders, collection: RetreatLeader.all, as: :check_boxes, checked: RetreatLeader.where(retreat_id: retreat.id).map{|x| x.id}, label: "Add or Remove Retreat Leaders"%>
+<% end %>
 <%= f.input :name %>
 <%= f.input :price %>
 <%= f.input :available_spots %>
