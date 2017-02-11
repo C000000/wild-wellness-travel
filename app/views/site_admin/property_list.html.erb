@@ -1,0 +1,7 @@
+<div class="container">
+	<div class="row">
+		<% @properties.each do |prop| %>
+			<%= render 'properties/property_card', property: prop %>
+		<% end %>
+	</div>
+</div>

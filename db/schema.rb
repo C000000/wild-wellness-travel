@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123154219) do
+ActiveRecord::Schema.define(version: 20170125120914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,18 @@ ActiveRecord::Schema.define(version: 20170123154219) do
     t.float    "latitude"
     t.float    "longitude"
     t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
+  end
+
+  create_table "retreat_leaders", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "biography"
+    t.string   "email"
+    t.string   "phone_number"
+    t.integer  "retreat_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["retreat_id"], name: "index_retreat_leaders_on_retreat_id", using: :btree
   end
 
   create_table "retreats", force: :cascade do |t|
@@ -154,6 +166,7 @@ ActiveRecord::Schema.define(version: 20170123154219) do
   add_foreign_key "bookings", "retreats"
   add_foreign_key "bookings", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "retreat_leaders", "retreats"
   add_foreign_key "retreats", "companies"
   add_foreign_key "retreats", "properties"
   add_foreign_key "reviews", "retreats"
