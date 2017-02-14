@@ -1,5 +1,5 @@
 .leader-card-wrapper {
-	margin: 10px auto; 
+	margin: 10px auto;
 	position: relative;
 	width: 250px;
 	height: 350px;
@@ -7,6 +7,10 @@
 	padding: 10px 5px;
 	background: linear-gradient(#64b3f4, #c2e59c);
 	box-shadow: 0 5px 10px rgba(0,0,0,0.6);
+}
+
+.avatar-pic {
+  // height: 130px;
 }
 
 .leader-card-wrapper .leader-name {
@@ -40,6 +44,12 @@
 		text-decoration: none;
 		color: white;
 	}
+}
+
+.leader-links.non-active {
+  background-color: black;
+  opacity: 0.8;
+  left: 0;
 }
 
 .leader-card-wrapper:hover .leader-links {

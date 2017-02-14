@@ -2,7 +2,7 @@ class RetreatLeadersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @leaders = RetreatLeader.all
+    @leaders = RetreatLeader.where(active: true)
   end
 
   def show
@@ -14,7 +14,7 @@ class RetreatLeadersController < ApplicationController
 
   def create
     @leader = RetreatLeader.new(retreat_leader_params)
-    if @leader.save 
+    if @leader.save
       redirect_to leader_list_path
     else
       render 'new'
@@ -50,7 +50,7 @@ class RetreatLeadersController < ApplicationController
   private
 
   def retreat_leader_params
-    params.require(:retreat_leader).permit(:first_name, :last_name, :phone_number, 
+    params.require(:retreat_leader).permit(:first_name, :last_name, :phone_number,
     :email, :biography, {pictures: []})
   end
 end

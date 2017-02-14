@@ -5,10 +5,11 @@
   </div>
   <!-- For company dashboard -->
   <% if current_page?(retreat_list_path) %>
-  <div class="card-links company-links">
+  <div class="card-links company-links <%= "non-active" unless retreat.active? %>">
     <div>
       <%= link_to "Edit", edit_retreat_path(retreat), class: "btn btn-info" %>
       <%= link_to "Delete", retreat_path(retreat), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <%= link_to retreat.active? ? "Deactivate" : "Activate", activate_retreat_path(retreat), class: "btn btn-success", method: :put %>
     </div>
   </div>
   <% elsif current_page?(retreats_path) %>

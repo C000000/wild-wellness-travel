@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get 'property_list' => 'site_admin#property_list'
   get 'leader_list' => 'site_admin#leader_list'
   get 'retreat_list' => 'site_admin#retreat_list'
+  put 'activate_property/:id' => 'site_admin#activate_property', as: "activate_property"
+  put 'activate_leader/:id' => 'site_admin#activate_leader', as: "activate_leader"
+  put 'activate_retreat/:id' => 'site_admin#activate_retreat', as: "activate_retreat"
 
   mount Attachinary::Engine => "/attachinary"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
