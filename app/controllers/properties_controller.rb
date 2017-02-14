@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @properties = Property.all
+    @properties = Property.where(active: true)
   end
 
   def show
@@ -39,9 +39,9 @@ class PropertiesController < ApplicationController
 
 
   private
-  
+
   def property_params
-    params.require(:property).permit(:name, :property_type, :guest_number, :phone_number, 
+    params.require(:property).permit(:name, :property_type, :guest_number, :phone_number,
     :email, :street_address, :country, :city, :state, :description, {pictures: []})
   end
 end

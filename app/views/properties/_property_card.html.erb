@@ -3,9 +3,10 @@
 		<div class="col-xs-12 col-lg-6">
 			<div class="property-pic">
 				<% if current_page?(property_list_path) %>
-				<div class="card-links company-links">
+				<div class="card-links company-links <%= "non-active" unless property.active? %>">
 					<div>
 						<%= link_to "Edit", edit_property_path(property), class: "btn btn-info" %>
+            <%= link_to property.active? ? "Deactivate" : "Activate", activate_property_path(property), class: "btn btn-success", method: :put %>
 					</div>
 				</div>
 				<% end %>

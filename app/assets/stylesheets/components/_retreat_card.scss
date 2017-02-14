@@ -121,6 +121,10 @@
   }
 }
 
+.card-links.non-active {
+  opacity: 0.6;
+}
+
 .card-link {
   position: absolute;
   top: 0;
