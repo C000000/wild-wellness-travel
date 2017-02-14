@@ -18,6 +18,7 @@ class RetreatsController < ApplicationController
   def create
     @retreat = Retreat.new(retreat_params.except(:retreat_leaders))
     if @retreat.save
+      # assign retreat ids to leaders
       retreat_params[:retreat_leaders].each do |r|
         RetreatLeader.find(r).update(retreat_id: @retreat.id) unless r.empty?
       end
@@ -34,7 +35,13 @@ class RetreatsController < ApplicationController
 
   def update
     @retreat = Retreat.find(params[:id])
-    if @retreat.update(retreat_params)
+    if @retreat.update(retreat_params.except(:retreat_leaders))
+      # clear leader retreat ids
+      RetreatLeader.where(retreat_id: params[:id]).map{ |r| r.update(retreat_id: nil) }
+      # re-assign retreat ids to leaders
+      retreat_params[:retreat_leaders].each do |r|
+        RetreatLeader.find(r).update(retreat_id: @retreat.id) unless r.empty?
+      end
       redirect_to edit_retreat_path
     else
       render 'edit'
@@ -48,7 +55,7 @@ class RetreatsController < ApplicationController
   end
 
   def retreat_params
-    params.require(:retreat).permit(:name, :property_id, :start_date, :end_date, :phone_number, 
+    params.require(:retreat).permit(:name, :property_id, :start_date, :end_date, :phone_number,
       :email, :available_spots, :video, :price, :description, :retreat_leaders => [])
   end
 end

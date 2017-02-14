@@ -11,24 +11,12 @@ $(document).ready(function() {
     });
   }
 
-  var retreat_street_address = $('#retreat_street_address').get(0);
-
-  if (retreat_street_address) {
-    var autocomplete = new google.maps.places.Autocomplete(retreat_street_address, { types: ['geocode'] });
-    google.maps.event.addListener(autocomplete, 'place_changed', onRetreatPlaceChanged);
-    google.maps.event.addDomListener(retreat_street_address, 'keydown', function(e) {
-      if (e.keyCode == 13) {
-        e.preventDefault(); // Do not submit the form on Enter.
-      }
-    });
-  }
-
   var property_street_address = $('#property_street_address').get(0);
 
   if (property_street_address) {
     var autocomplete = new google.maps.places.Autocomplete(property_street_address, { types: ['geocode'] });
     google.maps.event.addListener(autocomplete, 'place_changed', onPropertyPlaceChanged);
-    google.maps.event.addDomListener(retreat_street_address, 'keydown', function(e) {
+    google.maps.event.addDomListener(property_street_address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
       }
@@ -46,19 +34,6 @@ function onUserPlaceChanged() {
   $('#user_state').val(components.administrative_area_level_1);
   if (components.country_code) {
     $('#user_country').val(components.country_code);
-  }
-}
-
-function onRetreatPlaceChanged() {
-  var place = this.getPlace();
-  var components = getAddressComponents(place);
-
-  $('#retreat_street_address').trigger('blur').val(components.address);
-  $('#retreat_zip_code').val(components.zip_code);
-  $('#retreat_city').val(components.city);
-  $('#retreat_state').val(components.administrative_area_level_1);
-  if (components.country_code) {
-    $('#retreat_country').val(components.country_code);
   }
 }
 
