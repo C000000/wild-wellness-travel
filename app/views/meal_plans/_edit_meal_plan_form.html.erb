@@ -1,0 +1,5 @@
+<%= simple_form_for [retreat, meal] do |f| %>
+<%= f.input :name %>
+<%= f.button :submit, "Update", class: "btn btn-primary" %>
+<%= link_to "Delete", retreat_meal_plan_path(retreat, meal), method: :delete, class: "btn btn-danger" %>
+<% end %>

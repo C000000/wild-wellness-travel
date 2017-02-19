@@ -1,0 +1,14 @@
+<div class="container">
+<h3 class="text-center">Meal plan for retreat - <strong><%= @retreat.name %></strong></h3>
+  <% unless @meals.empty? %>
+  <ul>
+    <% @meals.each do |m| %>
+    <li>
+    <%= render 'edit_meal_plan_form', meal: m, retreat: @retreat %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <hr>
+  <%= render 'new_meal_plan_form', meal: @meal, retreat: @retreat %>
+</div>
