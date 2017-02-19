@@ -72,10 +72,10 @@
       <div class="row">
         <div class="col-xs-12 col-sm-3">
           <div class="avatar-and-name">
-          <%= cl_image_tag r.pictures.last.path, :transformation=>[
+            <%= cl_image_tag r.pictures.last.path, :transformation=>[
               {:width=>130, :height=>130, :gravity=>"face", :radius=>"max", :crop=>"crop"},
               {:width=>130}], class: "avatar-xxl" if r.pictures.last %>
-            <p><%= "#{r.first_name} #{r.last_name}" %></p>
+              <p><%= "#{r.first_name} #{r.last_name}" %></p>
             </div>
           </div>
           <div class="col-xs-12 col-sm-9">
@@ -85,10 +85,42 @@
         <hr>
         <% end %>
 
+        <h4>User Reviews:</h4>
+        <% @retreat.reviews.each do |r| %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <div class="avatar-and-name">
+              <% if r.user.profile_picture? %>
+              <%= cl_image_tag r.user.profile_picture.path, class: "avatar" %>
+              <% else %>
+              <%= image_tag r.user.facebook_picture_url || "image_placeholder.png", class: "avatar-large" %>
+              <% end %>
+              <p><%= r.user.first_name || "no name" %></p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <span class="blue-stars retreat-page">
+              <em style='width: <%= r.rating.nil? ? 0 : r.rating*20 %>%'></em>
+            </span>
+            <p><%= r.comment %></p>
+            <br>
+        <hr>
+          </div>
+        </div>
+        <% end %>
+
       </div>
-      <div class="col-xs-12 col-md-4"></div>
+      <div class="col-xs-12 col-md-4">
+        <div class="booking-info">
+          <h3><%= "#{@retreat.price.to_i}$" %></h3>
+          <p><%= "(#{(@retreat.end_date - @retreat.start_date).to_i} days)" %></p>
+          <br>
+          <%= link_to "Book", new_booking_path, class: "btn-lg btn-danger" %>
+        </div>
+      </div>
     </div>
     <% unless @retreat.video.empty? %>
+    <h4>Retreat Video:</h4>
     <% clip = @retreat.video[/[^=|\/]*$/] %>
     <iframe width="100%" height="720px" src="https://www.youtube.com/embed/<%= clip %>" frameborder="0" allowfullscreen style="margin-top: 20px"></iframe>
     <% end %>

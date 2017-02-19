@@ -1,11 +1,4 @@
 $(document).ready(function(){
-  $(".ret-tab").on("click", function(e){
-    $(".retreat-content").hide();
-    $(".ret-tab").removeClass("active");
-    $($(this).data("target")).fadeIn(500);
-    $(this).addClass("active");
-  });
-
   $(".retreat-pictures > div:first").fadeIn(300);
   if ($(".retreat-pictures div").length > 1) {
     setInterval(function() {
@@ -14,4 +7,12 @@ $(document).ready(function(){
       .end().appendTo(".retreat-pictures");
     },  4000);
   }
+
+  var $window = $(window),
+  $stickyEl = $('.booking-info'),
+  elTop = $stickyEl.offset().top;
+
+  $window.scroll(function() {
+    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+  });
 });
