@@ -1,5 +1,5 @@
 <div class="card-layout">
-  <%= image_tag "http://res.cloudinary.com/dijinio/image/upload/#{property.pictures.last.path}", class: "retreat-card-image" if property.pictures.last %>
+  <%= image_tag "#{c_image_path}#{property.pictures.last.path}", class: "retreat-card-image" if property.pictures.last %>
   <div class="card-name">
     <p><%= property.name %></p>
   </div>

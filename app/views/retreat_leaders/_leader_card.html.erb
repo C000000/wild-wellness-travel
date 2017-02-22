@@ -1,4 +1,5 @@
 <div class="leader-card-wrapper">
+  <%= image_tag "cardbackphoto.jpg", class: "card-background-pic" %>
 	<div class="avatar-pic">
 		<%= cl_image_tag leader.pictures.last.path, :transformation=>[
   {:width=>130, :height=>130, :gravity=>"face", :radius=>"max", :crop=>"crop"},
