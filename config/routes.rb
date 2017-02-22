@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :properties
   resources :retreat_leaders
-  resources :retreats
+  resources :retreats do
+    resources :meal_plans, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
   resources :bookings
   resources :reviews
 

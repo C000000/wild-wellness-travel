@@ -12,7 +12,7 @@
 <%= f.input :email %>
 <%= f.input :start_date, as: :string, input_html: { id: 'datepickerIn', readonly: 'readonly', style: 'width: 150px' } %>
 <%= f.input :end_date, as: :string, input_html: { id: 'datepickerOut', readonly: 'readonly', style: 'width: 150px' } %>
-<%= f.input :video %>
+<%= f.input :video, placeholder: "e.g https://www.youtube.com/watch?v=jY4Ac800Qu0" %>
 <%= f.input :description, input_html: {class: 'description-text-area'} %>
 <%= f.button :submit, class: "btn btn-primary" %>
 <%= link_to "Back", retreat_list_path, class: "btn btn-danger" %>

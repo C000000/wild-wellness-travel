@@ -10,6 +10,7 @@
       <%= link_to "Edit", edit_retreat_path(retreat), class: "btn btn-info" %>
       <%= link_to "Delete", retreat_path(retreat), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       <%= link_to retreat.active? ? "Deactivate" : "Activate", activate_retreat_path(retreat), class: "btn btn-success", method: :put %>
+      <%= link_to "add meals".upcase, new_retreat_meal_plan_path(retreat), class: "btn btn-primary" %>
     </div>
   </div>
   <% elsif current_page?(retreats_path) %>

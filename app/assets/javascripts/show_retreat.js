@@ -1,11 +1,4 @@
 $(document).ready(function(){
-  $(".ret-tab").on("click", function(e){
-    $(".retreat-content").hide();
-    $(".ret-tab").removeClass("active");
-    $($(this).data("target")).fadeIn(500);
-    $(this).addClass("active");
-  });
-
   $(".retreat-pictures > div:first").fadeIn(300);
   if ($(".retreat-pictures div").length > 1) {
     setInterval(function() {
