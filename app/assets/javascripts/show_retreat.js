@@ -7,12 +7,4 @@ $(document).ready(function(){
       .end().appendTo(".retreat-pictures");
     },  4000);
   }
-
-  var $window = $(window),
-  $stickyEl = $('.booking-info'),
-  elTop = $stickyEl.offset().top;
-
-  $window.scroll(function() {
-    $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
-  });
 });

@@ -85,6 +85,18 @@
         <hr>
         <% end %>
 
+        <div class="row">
+          <% unless @retreat.video.empty? %>
+          <h4>Retreat Video:</h4>
+          <% clip = @retreat.video[/[^=|\/]*$/] %>
+          <iframe width="100%" height="480px" src="https://www.youtube.com/embed/<%= clip %>" frameborder="0" allowfullscreen style="margin-top: 20px"></iframe>
+          <hr>
+          <% end %>
+          <h4>Location</h4>
+          <div id="retreat-map"></div>
+        </div>
+        <hr>
+
         <h4>User Reviews:</h4>
         <% @retreat.reviews.each do |r| %>
         <div class="row">
@@ -104,47 +116,52 @@
             </span>
             <p><%= r.comment %></p>
             <br>
-        <hr>
+            <hr>
           </div>
         </div>
         <% end %>
 
       </div>
       <div class="col-xs-12 col-md-4">
-        <div class="booking-info">
+        <div class="booking-info hidden-sm hidden-xs">
           <h3><%= "#{@retreat.price.to_i}$" %></h3>
-          <p><%= "(#{(@retreat.end_date - @retreat.start_date).to_i} days)" %></p>
           <br>
-          <%= link_to "Book", new_booking_path, class: "btn-lg btn-danger" %>
+          <%= link_to "Book", new_booking_path, class: "btn btn-danger" %>
         </div>
       </div>
     </div>
-    <% unless @retreat.video.empty? %>
-    <h4>Retreat Video:</h4>
-    <% clip = @retreat.video[/[^=|\/]*$/] %>
-    <iframe width="100%" height="720px" src="https://www.youtube.com/embed/<%= clip %>" frameborder="0" allowfullscreen style="margin-top: 20px"></iframe>
-    <% end %>
-    <div id="retreat-map"></div>
+
   </div>
+  <%= link_to "Book", new_booking_path, class: "btn btn-danger book-btn hidden-lg hidden-md" %>
 </div>
 
 
 <% content_for(:after_js) do %>
 <script>
-	$(document).ready(function() {
-		handler = Gmaps.build('Google');
-		handler.buildMap({ internal: {id: 'retreat-map'}}, function(){
-			markers = handler.addMarkers([
-			{
-				lat: <%= @property.latitude %>,
-				lng: <%= @property.longitude %>,
-				infowindow: "<%= @property.street_address %>"
-			}
-			]);
-			handler.bounds.extendWith(markers);
-			handler.fitMapToBounds();
-			handler.getMap().setZoom(15);
-		});
-	});
+  //display MAP
+  $(document).ready(function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap({ internal: {id: 'retreat-map'}}, function(){
+     markers = handler.addMarkers([
+     {
+      lat: <%= @property.latitude %>,
+      lng: <%= @property.longitude %>,
+      infowindow: "<%= @property.street_address %>"
+    }
+    ]);
+     handler.bounds.extendWith(markers);
+     handler.fitMapToBounds();
+     handler.getMap().setZoom(15);
+   });
+
+    //sticky div function
+    var $window = $(window),
+    $stickyEl = $('.booking-info'),
+    elTop = $stickyEl.offset().top;
+
+    $window.scroll(function() {
+      $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+    });
+  });
 </script>
 <% end %>
