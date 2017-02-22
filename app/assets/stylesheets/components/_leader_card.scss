@@ -5,8 +5,20 @@
 	height: 350px;
 	text-align: center;
 	padding: 10px 5px;
-	background: linear-gradient(#64b3f4, #c2e59c);
 	box-shadow: 0 5px 10px rgba(0,0,0,0.6);
+}
+
+.card-background-pic {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  background-position: center;
+  filter: blur(2px) opacity(.6);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -10;
 }
 
 .avatar-pic {

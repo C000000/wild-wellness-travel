@@ -1,5 +1,6 @@
 class RetreatLeader < ApplicationRecord
 	belongs_to :retreat, optional: true
+  has_one :property, through: :retreat
 
 	validates :first_name, :last_name, :pictures, presence: true
 

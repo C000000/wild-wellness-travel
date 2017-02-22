@@ -1,6 +1,7 @@
 <div class="retreat-pictures">
 	<% @property.pictures.each do |pic| %>
-  <div class="ret-pic" style='background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%), url(<%= "http://res.cloudinary.com/dijinio/image/upload/#{pic.path}" %>)'>
+  <div class="ret-pic" style='background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%), url(<%= "#{c_image_path}#{pic.path}" %>)'>
+  <a href="<%= "#{c_image_path}#{pic.path}" %>" data-lightbox="pics"></a>
   </div>
   <% end %>
 </div>

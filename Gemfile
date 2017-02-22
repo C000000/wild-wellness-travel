@@ -17,6 +17,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'lightbox2-rails'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
