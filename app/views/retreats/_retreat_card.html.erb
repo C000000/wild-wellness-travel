@@ -1,29 +1,69 @@
 <div class="card-layout">
-  <%= cl_image_tag retreat.pictures.last.path, size: '500x250', crop: :thumb, gravity: :center, class: "card-image" if retreat.pictures.first %>
-  <div class="card-location">
-    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-    <%= "#{retreat.city}, #{retreat.country}" %>
-  </div>
-  <div class="card-price">
-    <%= "#{retreat.price.to_i}$" %>
-  </div>
+  <%= image_tag "#{c_image_path}#{property.pictures.last.path}", class: "retreat-card-image" if property.pictures.last %>
   <div class="card-name">
-    <%= retreat.name %>
-  </div>
-  <div class="card-rating">
-    <% rating = retreat.reviews.average(:rating) %>
-    <span class="stars"><%= rating.nil? ? 0 : rating %></span>
+    <p><%= property.name %></p>
   </div>
   <!-- For company dashboard -->
-  <% if current_page?(company_dashboard_path) %>
-  <div class="card-links company-links">
+  <% if current_page?(retreat_list_path) %>
+  <div class="card-links company-links <%= "non-active" unless retreat.active? %>">
     <div>
       <%= link_to "Edit", edit_retreat_path(retreat), class: "btn btn-info" %>
       <%= link_to "Delete", retreat_path(retreat), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <%= link_to retreat.active? ? "Deactivate" : "Activate", activate_retreat_path(retreat), class: "btn btn-success", method: :put %>
+      <%= link_to "add meals".upcase, new_retreat_meal_plan_path(retreat), class: "btn btn-primary" %>
     </div>
   </div>
   <% elsif current_page?(retreats_path) %>
-    <%= link_to "#", retreat_path(retreat), class: "card-link" %>
+  <%= link_to "", retreat_path(retreat), class: "card-link" %>
   <% end %>
-  <div class="card-background-color"></div>
+  <div class="card-info">
+    <div class="card-left-side">
+      <p>Location: <span><%= "#{property.city}, #{property.state || property.country}" %></span></p>
+      <p>When: <span><%= "#{retreat.start_date.strftime('%d %B')} #{retreat.end_date.strftime('%d %B')}" %></span></p>
+      <div class="card-description">
+        <p><span><%= property.description %></span></p>
+      </div>
+    </div>
+    <div class="card-right-side">
+      <div class="card-price">
+        <%= "#{retreat.price.to_i}$" %>
+      </div>
+      <br>
+      <div class="card-rating">
+        <% rating = retreat.reviews.average(:rating) %>
+        <% count = retreat.reviews.count %>
+        <span class="blue-stars">
+          <em style='width: <%= rating.nil? ? 0 : rating*20 %>%'></em>
+        </span>
+        <small>(<%= "#{pluralize(count, 'review')}" %>)</small>
+      </div>
+    </div>
+  </div>
 </div>
+
+<% content_for(:after_js) do %>
+<script>
+  $(function() {
+    var start_date = new Date();
+    var end_date = new Date();
+    $("#datepickerIn").datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: new Date(),
+      defaultDate: new Date(),
+      onSelect: function(sDate) {
+        start_date = new Date(sDate);
+        $("#datepickerOut").val("");
+        $(".total-price-result p").text("");
+        $("#datepickerOut").datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: start_date,
+          defaultDate: start_date,
+          onSelect: function(eDate) {
+            end_date = new Date(eDate);
+          }
+        });
+      }
+    });
+  } );
+</script>
+<% end %>

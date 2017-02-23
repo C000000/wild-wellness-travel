@@ -1,121 +1,168 @@
 <div class="retreat-pictures">
-	<% @retreat.pictures.each do |pic| %>
-  <div class="ret-pic" style='background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%), url(<%= "http://res.cloudinary.com/dijinio/image/upload/#{pic.path}" %>)'>
+	<% @property.pictures.each do |pic| %>
+  <div class="ret-pic" style='background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%), url(<%= "#{c_image_path}#{pic.path}" %>)'>
+  <a href="<%= "#{c_image_path}#{pic.path}" %>" data-lightbox="pics"></a>
   </div>
   <% end %>
 </div>
 <div class="container retreat-container">
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="retreat-info-menu">
-        <a class="ret-tab dashboard-btn active" data-target="#retreat-details">Retreat Details</a>
-        <a class="ret-tab dashboard-btn" data-target="#retreat-photos">Photos</a>
-        <a class="ret-tab dashboard-btn" data-target="#retreat-reviews">Reviews</a>
-        <a class="ret-tab dashboard-btn" data-target="#retreat-contact">Contact Info</a>
-      </div>
-      <div class="retreat-results">
-        <div id="retreat-details" class="retreat-content">
-          <%= "#{@retreat.name} in #{@retreat.city}" %>
-          <br>
-          <%= "Price: #{@retreat.price.to_i}$" %>
-          <br>
-          <h4>Amenities:</h4>
-          <p>...</p>
-          <br>
+    <div class="col-xs-12 col-md-8">
+
+      <h3><%= "#{@retreat.name} in #{@retreat.property.city}, #{@retreat.property.state}" %></h3>
+      <% rating = @retreat.reviews.average(:rating) %>
+      <% count = @retreat.reviews.count %>
+      <span class="blue-stars retreat-page">
+        <em style='width: <%= rating.nil? ? 0 : rating*20 %>%'></em>
+      </span>
+      <small>(<%= "#{pluralize(count, 'review')}" %>)</small>
+      <hr>
+
+      <p><%= @retreat.description %></p>
+      <hr>
+      <br>
+      <h4>Retreat Details:</h4>
+      <br>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <p>Dates:</p>
         </div>
-        <div id="retreat-photos" class="retreat-content">
-          <% @retreat.pictures.each do |pic| %>
-          <%= cl_image_tag(pic.path, height: 150) %>
-          <% end %>
-        </div>
-        <div id="retreat-reviews" class="retreat-content">
-          <% @retreat.reviews.each do |r| %>
-          <div class="review-rating">
-            <p><strong><%= r.user.first_name %></strong></p>
-            <p><%= r.comment %></p>
-            <span class="stars"><%= r.rating %></span>
-            <hr>
-          </div>
-          <% end %>
-        </div>
-        <div id="retreat-contact" class="retreat-content">
-          <%= "Email: #{@retreat.email}" %>
-          <br>
-          <%= "Phone: #{@retreat.phone_number}" %>
+        <div class="col-xs-12 col-sm-9">
+          <p><%= "#{@retreat.start_date.strftime('%d %B')} - #{@retreat.end_date.strftime('%d %B')} (#{(@retreat.end_date - @retreat.start_date).to_i} days)" %></p>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="booking-window">
-        <%= "#{@retreat.price.to_i}$ per Night" %>
-        <%= simple_form_for @booking do |f| %>
-        <div class="row">
-          <div class="col-sm-6">
-            <label for="datepickerIn">Check In</label>
-            <input type="text" id="datepickerIn" name="booking[start_date]"
-            placeholder="yyyy-dd-mm" readonly="readonly" style="width: 150px">
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <p>Availability:</p>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <p><%= "#{@retreat.available_spots} spots left" %></p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <p>Price:</p>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <p><%= "#{@retreat.price.to_i}$" %></p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <p>Meal Plans:</p>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <ul class="meal-plan-list">
+            <% @retreat.meal_plans.each do |m| %>
+            <li><%= m.name%></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <hr>
+
+      <h4>Retreat Leaders:</h4>
+      <br>
+      <% @retreat.retreat_leaders.each do |r| %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <div class="avatar-and-name">
+            <%= cl_image_tag r.pictures.last.path, :transformation=>[
+              {:width=>130, :height=>130, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+              {:width=>130}], class: "avatar-xxl" if r.pictures.last %>
+              <p><%= "#{r.first_name} #{r.last_name}" %></p>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <label for="datepickerOut">Check Out</label>
-            <input type="text" id="datepickerOut" name="booking[end_date]"
-            placeholder="yyyy-dd-mm" readonly="readonly" style="width: 150px">
+          <div class="col-xs-12 col-sm-9">
+            <p><%= r.biography %></p>
           </div>
         </div>
         <hr>
-        <div class="total-price-result">
-          <p></p>
-        </div>
-        <%= f.hidden_field :retreat_id, value: @retreat.id %>
-        <%= f.button :submit, "Book", class: "btn btn-danger" %>
         <% end %>
+
+        <div class="row">
+          <% unless @retreat.video.empty? %>
+          <h4>Retreat Video:</h4>
+          <% clip = @retreat.video[/[^=|\/]*$/] %>
+          <iframe width="100%" height="480px" src="https://www.youtube.com/embed/<%= clip %>" frameborder="0" allowfullscreen style="margin-top: 20px"></iframe>
+          <hr>
+          <% end %>
+          <h4>Location</h4>
+          <div id="retreat-map"></div>
+        </div>
+        <hr>
+
+        <h4>User Reviews:</h4>
+        <% @retreat.reviews.each do |r| %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <div class="avatar-and-name">
+              <% if r.user.profile_picture? %>
+              <%= cl_image_tag r.user.profile_picture.path, class: "avatar" %>
+              <% else %>
+              <%= image_tag r.user.facebook_picture_url || "image_placeholder.png", class: "avatar-large" %>
+              <% end %>
+              <p><%= r.user.first_name || "no name" %></p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <span class="blue-stars retreat-page">
+              <em style='width: <%= r.rating.nil? ? 0 : r.rating*20 %>%'></em>
+            </span>
+            <p><%= r.comment %></p>
+            <br>
+            <hr>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="booking-info hidden-sm hidden-xs">
+          <h3><%= "#{@retreat.price.to_i}$" %></h3>
+          <br>
+          <%= link_to "Book", new_booking_path, class: "btn btn-danger" %>
+        </div>
       </div>
     </div>
+
   </div>
-  <div id="retreat-map"></div>
+  <%= link_to "Book", new_booking_path, class: "btn btn-danger book-btn hidden-lg hidden-md" %>
 </div>
 
 
 <% content_for(:after_js) do %>
 <script>
-	$(document).ready(function() {
-		handler = Gmaps.build('Google');
-		handler.buildMap({ internal: {id: 'retreat-map'}}, function(){
-			markers = handler.addMarkers([
-			{
-				lat: <%= @retreat.latitude %>,
-				lng: <%= @retreat.longitude %>,
-				infowindow: "<%= @retreat.street_address %>"
-			}
-			]);
-			handler.bounds.extendWith(markers);
-			handler.fitMapToBounds();
-			handler.getMap().setZoom(15);
-		});
-	});
-  $(function() {
-    var start_date = new Date();
-    var end_date = new Date();
-    $("#datepickerIn").datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: new Date(),
-      defaultDate: new Date(),
-      onSelect: function(sDate) {
-        start_date = new Date(sDate);
-        $("#datepickerOut").val("");
-        $(".total-price-result p").text("");
-        $("#datepickerOut").datepicker({
-          dateFormat: "yy-mm-dd",
-          minDate: start_date,
-          defaultDate: start_date,
-          onSelect: function(eDate) {
-            end_date = new Date(eDate);
-            var nights = ((end_date - start_date) / 1000 / 60 / 60 / 24);
-            $(".total-price-result p").text("Total for " + nights +
-              " nights: " + <%= @retreat.price %> * nights + "$");
-          }
-        });
-      }
+  //display MAP
+  $(document).ready(function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap({ internal: {id: 'retreat-map'}}, function(){
+     markers = handler.addMarkers([
+     {
+      lat: <%= @property.latitude %>,
+      lng: <%= @property.longitude %>,
+      infowindow: "<%= @property.street_address %>"
+    }
+    ]);
+     handler.bounds.extendWith(markers);
+     handler.fitMapToBounds();
+     handler.getMap().setZoom(15);
+   });
+
+    //sticky div function
+    var $window = $(window),
+    $stickyEl = $('.booking-info'),
+    elTop = $stickyEl.offset().top;
+
+    $window.scroll(function() {
+      $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
     });
-  } );
+  });
 </script>
 <% end %>

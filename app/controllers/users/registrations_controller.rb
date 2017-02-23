@@ -56,7 +56,7 @@ before_action :configure_account_update_params, only: [:update]
     devise_parameter_sanitizer.permit(:account_update,
       keys: [:first_name, :last_name, :date_of_birth,
             :gender, :country, :city, :street_address, :state,
-            :phone_number, :zip_code, :email, :password,
+            :phone_number, :zip_code, :email, :password, :biography,
             :password_confirmation, :profile_picture])
   end
 

@@ -1,0 +1,23 @@
+<%= simple_form_for property do |f| %>
+<div class="col-xs-12 col-sm-4">
+	<%= f.input :pictures, as: :attachinary, label: "Pictures (last uploaded will be a card cover picture)" %>
+</div>
+<div class="col-xs-12 col-sm-8">
+	<%= f.input :name, autofocus: true %>
+	<%= f.input :property_type, collection: Property::PROPERTY_TYPE, prompt: "Select property type" %>
+	<%= f.input :guest_number %>
+	<%= f.input :country, priority: ["United States"] %>
+	<%= f.input :state, collection: User::STATES, prompt: "Select state" %>
+	<%= f.input :city %>
+	<%= f.input :street_address %>
+	<%= f.input :phone_number %>
+	<%= f.input :email %>
+	<%= f.input :description, input_html: {class: 'description-text-area'} %>
+</div>
+<div class="text-center">
+	<%= f.button :submit, class: "btn btn-primary" %>
+	<%= link_to "Back", property_list_path, class: "btn btn-danger" %>
+</div>
+<br>
+<br>
+<% end %>

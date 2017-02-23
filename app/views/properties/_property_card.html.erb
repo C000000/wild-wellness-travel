@@ -1,0 +1,24 @@
+<div class="property-card-layout">
+	<div class="row">
+		<div class="col-xs-12 col-lg-6">
+			<div class="property-pic">
+				<% if current_page?(property_list_path) %>
+				<div class="card-links company-links <%= "non-active" unless property.active? %>">
+					<div>
+						<%= link_to "Edit", edit_property_path(property), class: "btn btn-info" %>
+            <%= link_to property.active? ? "Deactivate" : "Activate", activate_property_path(property), class: "btn btn-success", method: :put %>
+					</div>
+				</div>
+				<% end %>
+				<%= image_tag "#{c_image_path}#{property.pictures.last.path}", class: "property-card-image" if property.pictures.first %>
+				<h3><%= property.name %></h3>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="property-info">
+				<h4>Location: <%= "#{property.city}, #{property.country_name}" %></h4>
+				<p><%= property.description %></p>
+			</div>
+		</div>
+	</div>
+</div>

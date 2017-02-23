@@ -1,0 +1,10 @@
+<%= simple_form_for leader do |f| %>
+<%= f.input :pictures, as: :attachinary %>
+<%= f.input :first_name %>
+<%= f.input :last_name %>
+<%= f.input :phone_number %>
+<%= f.input :email %>
+<%= f.input :biography, input_html: {class: 'description-text-area'} %>
+<%= f.button :submit, class: "btn btn-primary" %>
+<%= link_to "Back", leader_list_path, class: "btn btn-danger" %>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="leader-card-wrapper">
+  <%= image_tag "cardbackphoto.jpg", class: "card-background-pic" %>
+	<div class="avatar-pic">
+		<%= cl_image_tag leader.pictures.last.path, :transformation=>[
+  {:width=>130, :height=>130, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+  {:width=>130}], class: "avatar-xxl" if leader.pictures.last %>
+	</div>
+	<div class="leader-name">
+		<p><%= "#{leader.first_name} #{leader.last_name}" %></p>
+	</div>
+	<div class="leader-bio">
+		<p><%= leader.biography %></p>
+	</div>
+	<div class="leader-links <%= "non-active" unless leader.active? %>">
+		<% if current_page?(leader_list_path) %>
+		<%= link_to "Edit", edit_retreat_leader_path(leader), class: "btn-xs btn-warning" %>
+		<%= link_to "Remove", retreat_leader_path(leader), method: :delete, data: {confirm: 'Are you sure?' }, class: "btn-xs btn-danger" %>
+    <%= link_to leader.active? ? "Deactivate" : "Activate", activate_leader_path(leader), class: "btn-xs btn-success", method: :put %>
+		<% else %>
+		<a href="mailto:<%= leader.email %>"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+		<% end %>
+	</div>
+</div>

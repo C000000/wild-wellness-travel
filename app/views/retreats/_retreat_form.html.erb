@@ -1,0 +1,50 @@
+<%= simple_form_for retreat do |f| %>
+<%= f.input :property_id, label: "Property of Retreat", collection: Property.all, prompt: "Choose property" %>
+<% if current_page?(new_retreat_path) %>
+<%= f.input :retreat_leaders, collection: RetreatLeader.where(retreat_id: nil), as: :check_boxes, label: "Choose Retreat Leaders"%>
+<% else %>
+<%= f.input :retreat_leaders, collection: RetreatLeader.all, as: :check_boxes, checked: RetreatLeader.where(retreat_id: retreat.id).map{|x| x.id}, label: "Add or Remove Retreat Leaders"%>
+<% end %>
+<%= f.input :name %>
+<%= f.input :price %>
+<%= f.input :available_spots %>
+<%= f.input :phone_number %>
+<%= f.input :email %>
+<%= f.input :start_date, as: :string, input_html: { id: 'datepickerIn', readonly: 'readonly', style: 'width: 150px' } %>
+<%= f.input :end_date, as: :string, input_html: { id: 'datepickerOut', readonly: 'readonly', style: 'width: 150px' } %>
+<%= f.input :video, placeholder: "e.g https://www.youtube.com/watch?v=jY4Ac800Qu0" %>
+<%= f.input :description, input_html: {class: 'description-text-area'} %>
+<%= f.button :submit, class: "btn btn-primary" %>
+<%= link_to "Back", retreat_list_path, class: "btn btn-danger" %>
+<br>
+<br>
+<% end %>
+
+<% content_for(:after_js) do %>
+<script>
+	$(function() {
+		var start_date = new Date();
+		var end_date = new Date();
+		$("#datepickerIn").datepicker({
+			dateFormat: "yy-mm-dd",
+			minDate: new Date(),
+			defaultDate: new Date(),
+			onSelect: function(sDate) {
+				start_date = new Date(sDate);
+				$("#datepickerOut").val("");
+				$(".total-price-result p").text("");
+				$("#datepickerOut").datepicker({
+					dateFormat: "yy-mm-dd",
+					minDate: start_date,
+					defaultDate: start_date,
+					onSelect: function(eDate) {
+						end_date = new Date(eDate);
+					}
+				});
+			}
+		});
+	} );
+</script>
+<% end %>
+
+

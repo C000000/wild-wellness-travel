@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <% @retreats.each do |ret| %>
-    <div class="col-xs-12 col-lg-6">
-      <%= render 'retreat_card', retreat: ret %>
+    <div class="col-xs-12 col-md-6">
+      <%= render 'retreat_card', retreat: ret, property: ret.property %>
     </div>
     <% end %>
   </div>

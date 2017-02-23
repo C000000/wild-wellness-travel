@@ -1,0 +1,46 @@
+.admin-panel {
+  display: block;
+  height: 100px;
+  width: 100%;
+}
+
+.panel-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  li {
+    border-right: 1px solid #bbb;
+    float: left;
+    &:first-child {
+      padding: 0 50px; 
+    }
+  }
+}
+
+.panel-list li a {
+  margin: 0 auto;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  &:hover {
+    background-color: #111;
+  }
+}
+
+.panel-list li p {
+  margin: 0 auto;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.active_link {
+  background-color: green;
+}

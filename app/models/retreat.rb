@@ -1,21 +1,10 @@
 class Retreat < ApplicationRecord
-	belongs_to :company
+	belongs_to :property
 	has_many :reviews
-  has_many :bookings
+	has_many :bookings
+	has_many :retreat_leaders
+  has_many :meal_plans
 
-	has_attachments :pictures, maximum: 10
+	validates :property, :start_date, :end_date, :price, presence: true
 
-	validates :country, :city, :street_address, :price, presence: true
-
-	geocoded_by :full_address
-	after_validation :geocode, if: :full_address_changed?
-
-
-	def full_address
-		"#{street_address}, #{city} #{state} #{ISO3166::Country[country].name}"
-	end
-
-	def full_address_changed?
-		street_address_changed? || city_changed? || state_changed? || country_changed?
-	end
 end

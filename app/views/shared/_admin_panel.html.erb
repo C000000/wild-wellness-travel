@@ -1,0 +1,11 @@
+<div class="admin-panel">
+  <ul class="panel-list">
+  	<li><p>Admin Panel</p></li>
+  	<li><%= link_to "List of Properties", property_list_path, class: a_cp(property_list_path) %></li>
+  	<li><%= link_to "List of Leaders", leader_list_path, class: a_cp(leader_list_path) %></li>
+  	<li><%= link_to "List of Retreats", retreat_list_path, class: a_cp(retreat_list_path) %></li>
+    <li><%= link_to "Add New Property", new_property_path, class: a_cp(new_property_path) %></li>
+    <li><%= link_to "Add New Leader", new_retreat_leader_path, class: a_cp(new_retreat_leader_path) %></li>
+    <li><%= link_to "Add New Retreat", new_retreat_path, class: a_cp(new_retreat_path) %></li>
+  </ul>
+</div>

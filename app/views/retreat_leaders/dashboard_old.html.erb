@@ -1,11 +1,14 @@
 <div class="container">
-  <h1 class="text-center"><%= @company.name %> Dashboard</h1>
+  <h1 class="text-center"><%= "#{current_user.first_name}'s" %> Dashboard</h1>
   <hr>
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       <ul class="dashboard-menu">
         <li>
           <a class="dash-tab dashboard-btn active" data-target="#retreat-list">Retreats</a>
+        </li>
+        <li>
+          <a class="dash-tab dashboard-btn" data-target="#properties-list">Properties</a>
         </li>
         <li>
           <a class="dash-tab dashboard-btn" data-target="#booking-list">Bookings</a>
@@ -15,20 +18,28 @@
         </li>
         <hr>
         <li>
-          <a class="dash-tab dashboard-btn dashboard-green-btn" data-target="#new-retreat">Add New Retreat</a>
+          <a class="dash-tab dashboard-btn dashboard-green-btn" data-target="#new-property">Add New Property</a>
         </li>
         <li>
-          <a class="dash-tab dashboard-btn dashboard-green-btn" data-target="#edit-company-details">Edit Company Details</a>
+          <a class="dash-tab dashboard-btn dashboard-green-btn" data-target="#new-retreat">Add New Retreat</a>
         </li>
       </ul>
     </div>
     <div class="col-xs-12 col-sm-9">
       <div class="dashboard-results">
         <div id="retreat-list" class="dashboard-content">
-          <% if @company.retreats.first %>
-          <% @company.retreats.each do |ret| %>
-          <%= render 'retreats/retreat_card', retreat: ret %>
+        <% @properties.each do |prop| %>
+          <% if prop.retreats.first %>
+          <h4><%= "#{prop.name} Retreats" %></h4>
+          <% prop.retreats.each do |ret| %>
+          <%= render 'retreats/retreat_card', retreat: ret, property: prop %>
           <% end %>
+          <% end %>
+          <% end %>
+        </div>
+        <div id="properties-list" class="dashboard-content">
+          <% @properties.each do |prop| %>
+          <%= render 'properties/property_card', property: prop %>
           <% end %>
         </div>
         <div id="booking-list" class="dashboard-content">
@@ -37,11 +48,11 @@
         <div id="completed-bookings" class="dashboard-content">
           <h1>COMPLETED</h1>
         </div>
+        <div id="new-property" class="dashboard-content">
+          <%= render 'properties/property_form', property: @property %>
+        </div>
         <div id="new-retreat" class="dashboard-content">
           <%= render 'retreats/new_retreat_form', retreat: @retreat %>
-        </div>
-        <div id="edit-company-details" class="dashboard-content">
-          <%= render 'edit_company_form', company: @company %>
         </div>
       </div>
     </div>
